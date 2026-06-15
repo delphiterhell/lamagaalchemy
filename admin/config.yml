@@ -91,9 +91,10 @@ collections:
                 widget: "string"
               - label: "Data"
                 name: "data"
-                widget: "date"
+                widget: "datetime"
                 date_format: "yyyy-MM-dd"
                 time_format: false
+                picker_utc: true
               - label: "Luogo"
                 name: "luogo"
                 widget: "string"
