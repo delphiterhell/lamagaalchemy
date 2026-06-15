@@ -1,0 +1,911 @@
+﻿<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="La Maga Alchemy — Gioielli artigianali in macramè e argento di Magalì. Collane, workshop e mercatini." />
+  <title>La Maga Alchemy — Gioielli Artigianali di Magalì</title>
+
+  <!-- Favicon (usa il logo come favicon) -->
+  <link rel="icon" type="image/jpeg" href="images/logo.jpg" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ============================================================
+  SVG SIMBOLI ALCHEMICI — definizioni riutilizzabili
+============================================================ -->
+<svg style="display:none" aria-hidden="true">
+  <defs>
+    <!-- Fuoco △ -->
+    <symbol id="sym-fire" viewBox="0 0 20 22">
+      <polygon points="10,2 19,20 1,20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+    </symbol>
+    <!-- Acqua ▽ -->
+    <symbol id="sym-water" viewBox="0 0 20 22">
+      <polygon points="10,20 19,2 1,2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+    </symbol>
+    <!-- Terra △ con barra -->
+    <symbol id="sym-earth" viewBox="0 0 20 22">
+      <polygon points="10,2 19,20 1,20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+      <line x1="5" y1="14" x2="15" y2="14" stroke="currentColor" stroke-width="1.5"/>
+    </symbol>
+    <!-- Aria ▽ con barra -->
+    <symbol id="sym-air" viewBox="0 0 20 22">
+      <polygon points="10,20 19,2 1,2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+      <line x1="5" y1="10" x2="15" y2="10" stroke="currentColor" stroke-width="1.5"/>
+    </symbol>
+    <!-- Rombo decorativo -->
+    <symbol id="sym-diamond" viewBox="0 0 14 14">
+      <rect x="2" y="2" width="10" height="10" fill="currentColor" transform="rotate(45 7 7)"/>
+    </symbol>
+  </defs>
+</svg>
+
+
+<!-- ============================================================
+  HEADER
+============================================================ -->
+<header id="header" role="banner">
+  <div class="header-inner">
+    <a href="#hero" class="logo-wrap" aria-label="La Maga Alchemy — torna all'inizio">
+      <!-- Sostituisci logo.jpg con il percorso corretto del logo -->
+      <img src="images/logo.jpg" alt="Logo La Maga Alchemy" class="logo-img" />
+      <div class="logo-text">
+        La Maga Alchemy
+        <span class="logo-sub">Gioielli Artigianali</span>
+      </div>
+    </a>
+
+    <button class="hamburger" id="hamburger" aria-label="Apri menu" aria-expanded="false" aria-controls="nav">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav id="nav" class="nav" aria-label="Navigazione principale">
+      <a href="#chi-sono"  class="nav-link">Chi sono</a>
+      <a href="#collezioni" class="nav-link">Collezioni</a>
+      <a href="#eventi"    class="nav-link">Mercatini</a>
+      <a href="#workshop"  class="nav-link">Workshop</a>
+      <a href="#contatti"  class="nav-link nav-cta">Contattami</a>
+    </nav>
+  </div>
+</header>
+
+
+<!-- ============================================================
+  HERO
+============================================================ -->
+<section id="hero" aria-label="Benvenuto">
+
+  <!-- ── Cornice ornamentale dorata ── -->
+  <div class="hero-frame" aria-hidden="true">
+    <!-- Angolo TL — gli altri 3 vengono specchiati via CSS -->
+    <div class="hero-corner hero-corner--tl">
+      <svg viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 62,5 L 5,5 L 5,62" stroke="#C8952A" stroke-width="1.2" opacity="0.55"/>
+        <path d="M 56,13 L 13,13 L 13,56" stroke="#C8952A" stroke-width="0.5" opacity="0.28"/>
+        <polygon points="5,0 10,5 5,10 0,5" stroke="#C8952A" stroke-width="0.9" fill="rgba(200,149,42,0.18)"/>
+        <line x1="34" y1="5" x2="34" y2="9" stroke="#C8952A" stroke-width="0.7" opacity="0.45"/>
+        <line x1="5" y1="34" x2="9" y2="34" stroke="#C8952A" stroke-width="0.7" opacity="0.45"/>
+      </svg>
+    </div>
+    <div class="hero-corner hero-corner--tr">
+      <svg viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 62,5 L 5,5 L 5,62" stroke="#C8952A" stroke-width="1.2" opacity="0.55"/>
+        <path d="M 56,13 L 13,13 L 13,56" stroke="#C8952A" stroke-width="0.5" opacity="0.28"/>
+        <polygon points="5,0 10,5 5,10 0,5" stroke="#C8952A" stroke-width="0.9" fill="rgba(200,149,42,0.18)"/>
+        <line x1="34" y1="5" x2="34" y2="9" stroke="#C8952A" stroke-width="0.7" opacity="0.45"/>
+        <line x1="5" y1="34" x2="9" y2="34" stroke="#C8952A" stroke-width="0.7" opacity="0.45"/>
+      </svg>
+    </div>
+    <div class="hero-corner hero-corner--bl">
+      <svg viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 62,5 L 5,5 L 5,62" stroke="#C8952A" stroke-width="1.2" opacity="0.55"/>
+        <path d="M 56,13 L 13,13 L 13,56" stroke="#C8952A" stroke-width="0.5" opacity="0.28"/>
+        <polygon points="5,0 10,5 5,10 0,5" stroke="#C8952A" stroke-width="0.9" fill="rgba(200,149,42,0.18)"/>
+        <line x1="34" y1="5" x2="34" y2="9" stroke="#C8952A" stroke-width="0.7" opacity="0.45"/>
+        <line x1="5" y1="34" x2="9" y2="34" stroke="#C8952A" stroke-width="0.7" opacity="0.45"/>
+      </svg>
+    </div>
+    <div class="hero-corner hero-corner--br">
+      <svg viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 62,5 L 5,5 L 5,62" stroke="#C8952A" stroke-width="1.2" opacity="0.55"/>
+        <path d="M 56,13 L 13,13 L 13,56" stroke="#C8952A" stroke-width="0.5" opacity="0.28"/>
+        <polygon points="5,0 10,5 5,10 0,5" stroke="#C8952A" stroke-width="0.9" fill="rgba(200,149,42,0.18)"/>
+        <line x1="34" y1="5" x2="34" y2="9" stroke="#C8952A" stroke-width="0.7" opacity="0.45"/>
+        <line x1="5" y1="34" x2="9" y2="34" stroke="#C8952A" stroke-width="0.7" opacity="0.45"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- ── Stelle e scintille sparse ── -->
+  <div aria-hidden="true">
+    <!-- ╔══════════════════════════════════════════╗
+         Stelle nelle 4 zone indicate (dentro il frame, a fianco dei cristalli).
+         Nessuna stella nell'header (top < 12%).
+         ╚══════════════════════════════════════════╝ -->
+
+    <!-- ZONA 1 — angolo in alto a sinistra (top 13–26%, left 24–36%) -->
+    <span class="hero-star hero-star--zona1" style="top:13%;left:27%;font-size:11px;--op-lo:0.22;--op-hi:0.65;--dur:4.2s;--delay:0.4s">✦</span>
+    <span class="hero-star hero-star--text" style="top:18%;left:31%;font-size:5px; --op-lo:0.18;--op-hi:0.50;--dur:3.8s;--delay:1.9s">●</span>
+    <span class="hero-star hero-star--text" style="top:23%;left:25%;font-size:8px; --op-lo:0.16;--op-hi:0.55;--dur:4.6s;--delay:0.9s">★</span>
+
+    <!-- ZONA 2 — angolo in alto a destra (top 13–26%, left 64–76%) -->
+    <span class="hero-star" style="top:14%;left:72%;font-size:10px;--op-lo:0.20;--op-hi:0.62;--dur:4.0s;--delay:1.2s">✦</span>
+    <span class="hero-star hero-star--text" style="top:19%;left:68%;font-size:5px; --op-lo:0.18;--op-hi:0.48;--dur:5.0s;--delay:2.2s">●</span>
+    <span class="hero-star hero-star--text" style="top:25%;left:74%;font-size:8px; --op-lo:0.16;--op-hi:0.52;--dur:3.6s;--delay:0.6s">★</span>
+
+    <!-- Stelle centro-alto: sparse su tutta la fascia sopra il titolo -->
+    <span class="hero-star" style="top:14%;left:56%;font-size:5px; --op-lo:0.16;--op-hi:0.48;--dur:3.9s;--delay:1.2s">●</span>
+    <span class="hero-star" style="top:18%;left:42%;font-size:10px;--op-lo:0.20;--op-hi:0.60;--dur:4.5s;--delay:0.5s">✦</span>
+    <span class="hero-star" style="top:23%;left:71%;font-size:8px; --op-lo:0.18;--op-hi:0.54;--dur:4.1s;--delay:2.3s">★</span>
+
+    <!-- Centro: stelle attorno al titolo (sopra il bottone) -->
+    <span class="hero-star hero-star--text" style="top:32%;left:58%;font-size:7px; --op-lo:0.16;--op-hi:0.46;--dur:4.8s;--delay:2.4s">★</span>
+    <span class="hero-star hero-star--text" style="top:38%;left:40%;font-size:5px; --op-lo:0.14;--op-hi:0.44;--dur:3.4s;--delay:0.6s">●</span>
+
+    <!-- Area tra bottone e "SCORRI": spostate più in basso (+5%) per non toccare il bottone -->
+    <span class="hero-star" style="top:79%;left:36%;font-size:10px;--op-lo:0.20;--op-hi:0.60;--dur:4.2s;--delay:1.1s">✦</span>
+    <span class="hero-star" style="top:83%;left:60%;font-size:5px; --op-lo:0.18;--op-hi:0.48;--dur:3.6s;--delay:0.4s">●</span>
+    <span class="hero-star" style="top:87%;left:44%;font-size:8px; --op-lo:0.18;--op-hi:0.56;--dur:4.8s;--delay:1.8s">★</span>
+    <span class="hero-star" style="top:91%;left:64%;font-size:11px;--op-lo:0.22;--op-hi:0.62;--dur:4.0s;--delay:0.9s">✦</span>
+  </div>
+
+  <!-- ── Cristallo sinistro — PNG estratto dal bigliettino originale ── -->
+  <!-- FILE DA COPIARE: images/crystal_left.png  -->
+  <div class="hero-crystal hero-crystal--left" aria-hidden="true">
+    <img src="images/crystal_left.png" alt="" class="crystal-img" />
+  </div>
+
+  <!-- ── Cristallo destro — PNG estratto dal bigliettino originale ── -->
+  <!-- FILE DA COPIARE: images/crystal_right.png  -->
+  <div class="hero-crystal hero-crystal--right" aria-hidden="true">
+    <img src="images/crystal_right.png" alt="" class="crystal-img" />
+  </div>
+
+  <!-- ── Contenuto centrale ── -->
+  <div class="hero-inner">
+    <div class="hero-eyebrow" aria-hidden="true">
+      <span class="hero-eyebrow-line"></span>
+      <span>Macramè &nbsp;·&nbsp; Argento</span>
+      <span class="hero-eyebrow-line"></span>
+    </div>
+
+    <h1 class="hero-title">
+      Gioielli artigianali che portano con sé<br/>
+      <em>un pezzo di magia.</em>
+    </h1>
+
+    <p class="hero-sub">
+      Ogni pezzo è unico, fatto a mano con cura.
+    </p>
+
+    <!-- Su desktop: solo il bottone. Su mobile: flex row cristallo+bottone+cristallo -->
+    <div class="hero-cta-row">
+      <img src="images/crystal_left.png"  alt="" class="hero-cta-crystal" aria-hidden="true" />
+      <a href="#collezioni" class="hero-cta" aria-label="Scopri le collezioni">
+        <svg width="16" height="16" viewBox="0 0 20 22" fill="none" aria-hidden="true">
+          <use href="#sym-fire"/>
+        </svg>
+        Scopri le collezioni
+      </a>
+      <img src="images/crystal_right.png" alt="" class="hero-cta-crystal" aria-hidden="true" />
+    </div>
+  </div>
+
+  <div class="hero-scroll" aria-hidden="true">
+    <span>Scorri</span>
+    <svg width="18" height="24" viewBox="0 0 18 24" fill="none">
+      <rect x="1" y="1" width="16" height="22" rx="8" stroke="currentColor" stroke-width="1.2"/>
+      <circle cx="9" cy="7" r="2" fill="currentColor">
+        <animate attributeName="cy" values="7;15;7" dur="2.2s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="1;0;1" dur="2.2s" repeatCount="indefinite"/>
+      </circle>
+    </svg>
+  </div>
+</section>
+
+
+<!-- ============================================================
+  SEPARATORE
+============================================================ -->
+<div class="divider" aria-hidden="true">
+  <span class="divider-line"></span>
+  <span class="divider-symbol">
+    <svg><use href="#sym-fire"/></svg>
+    <svg><use href="#sym-diamond"/></svg>
+    <svg><use href="#sym-water"/></svg>
+  </span>
+  <span class="divider-line"></span>
+</div>
+
+
+<!-- ============================================================
+  CHI SONO
+============================================================ -->
+<section id="chi-sono" class="section section--mid">
+  <div class="container">
+    <div class="chi-sono-grid">
+
+      <!-- Immagine di Magalì -->
+      <div class="chi-sono-visual reveal">
+        <div class="portrait-deco" aria-hidden="true"></div>
+        <!--
+          📸 FOTO: inserisci qui la tua foto.
+          Sostituisci il blocco .portrait-placeholder con:
+          <img src="immagini/magali.jpg" alt="Magalì — La Maga Alchemy" style="width:100%;max-width:420px;border-radius:2px;" />
+        -->
+        <div class="portrait-placeholder" role="img" aria-label="Foto di Magalì — in arrivo">
+          <svg width="48" height="52" viewBox="0 0 20 22" fill="none" style="color:#C8952A;opacity:0.4">
+            <use href="#sym-earth"/>
+          </svg>
+          <span class="portrait-label">Foto di Magalì</span>
+         <!--  <span class="portrait-label" style="opacity:0.5;font-size:0.55rem">→ inserisci qui la tua immagine</span> -->
+        </div>
+      </div>
+
+      <!-- Testo -->
+      <div class="chi-sono-content">
+     <!--    <span class="section-label reveal reveal-delay-1">L'artigiana</span> -->
+        <h2 class="section-title reveal reveal-delay-1" style="margin-bottom:1.5rem">
+          Chi sono
+        </h2>
+
+        <p class="reveal reveal-delay-2">
+          [Bio di Magalì]
+        </p>
+
+        <blockquote class="quote reveal reveal-delay-3">
+          [Citazione o frase di Magalì]
+        </blockquote>
+
+        <p class="reveal reveal-delay-3">
+          [Descrizione del lavoro e dei materiali]
+        </p>
+
+        <p class="reveal reveal-delay-4">
+          [Workshop e mercatini]
+        </p>
+
+        <div class="elementi-row reveal reveal-delay-5">
+          <div class="elemento-chip">
+            <svg width="14" height="16" viewBox="0 0 20 22" fill="none"><use href="#sym-fire"/></svg>
+            Fuoco
+          </div>
+          <div class="elemento-chip">
+            <svg width="14" height="16" viewBox="0 0 20 22" fill="none"><use href="#sym-water"/></svg>
+            Acqua
+          </div>
+          <div class="elemento-chip">
+            <svg width="14" height="16" viewBox="0 0 20 22" fill="none"><use href="#sym-earth"/></svg>
+            Terra
+          </div>
+          <div class="elemento-chip">
+            <svg width="14" height="16" viewBox="0 0 20 22" fill="none"><use href="#sym-air"/></svg>
+            Aria
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+  SEPARATORE
+============================================================ -->
+<div class="divider" aria-hidden="true">
+  <span class="divider-line"></span>
+  <span class="divider-symbol">
+    <svg><use href="#sym-earth"/></svg>
+    <svg><use href="#sym-diamond"/></svg>
+    <svg><use href="#sym-air"/></svg>
+  </span>
+  <span class="divider-line"></span>
+</div>
+
+
+<!-- ============================================================
+  COLLEZIONI
+============================================================ -->
+<section id="collezioni" class="section section--mid">
+  <div class="container">
+
+    <div class="section-header">
+      <span class="section-label reveal">Le mie creazioni</span>
+      <h2 class="section-title reveal reveal-delay-1">
+        Collezioni
+      </h2>
+      <p class="section-desc reveal reveal-delay-2">
+        [Descrizione introduttiva delle collezioni]
+      </p>
+    </div>
+
+    <!-- Tabs -->
+    <div class="collezioni-tabs reveal">
+      <button class="tab-btn active" data-tab="piccolini">I Piccolini</button>
+      <button class="tab-btn" data-tab="chokers">I Chokers</button>
+      <button class="tab-btn" data-tab="pezzi-unici">Pezzi Unici</button>
+    </div>
+
+    <!-- Gruppo: I Piccolini -->
+    <div class="collezione-group active" data-group="piccolini">
+      <div class="products-grid">
+
+        <!--
+          📸 FOTO PRODOTTO: per ogni card sostituisci il div .product-ph con:
+          <img src="immagini/piccolini-01.jpg" alt="Nome prodotto" style="width:100%;height:100%;object-fit:cover;" />
+        -->
+
+        <article class="product-card reveal">
+          <div class="product-img-wrap">
+            <!-- 📸 prod-1.jpg: collana macramè bordeaux con labradorite -->
+            <img src="images/macrame1.png"
+                 alt="Collana macramè bordeaux con labradorite"
+                 class="product-img" />
+            <div class="product-overlay" aria-hidden="true">
+              <span class="product-overlay-icon">✦</span>
+            </div>
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">[Nome prodotto]</h3>
+            <p class="product-desc">[Descrizione del prodotto]</p>
+            <span class="product-tag">I Piccolini</span>
+          </div>
+        </article>
+
+        <article class="product-card reveal reveal-delay-1">
+          <div class="product-img-wrap">
+            <div class="product-ph product-ph--2" aria-label="Foto prodotto in arrivo">
+              <span class="product-ph-label">inserisci foto</span>
+            </div>
+            <div class="product-overlay" aria-hidden="true">
+              <span class="product-overlay-icon">✦</span>
+            </div>
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">[Nome prodotto]</h3>
+            <p class="product-desc">[Descrizione del prodotto]</p>
+            <span class="product-tag">I Piccolini</span>
+          </div>
+        </article>
+
+        <article class="product-card reveal reveal-delay-2">
+          <div class="product-img-wrap">
+            <div class="product-ph product-ph--3" aria-label="Foto prodotto in arrivo">
+              <span class="product-ph-label">inserisci foto</span>
+            </div>
+            <div class="product-overlay" aria-hidden="true">
+              <span class="product-overlay-icon">✦</span>
+            </div>
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">[Nome prodotto]</h3>
+            <p class="product-desc">[Descrizione del prodotto]</p>
+            <span class="product-tag">I Piccolini</span>
+          </div>
+        </article>
+
+        <article class="product-card reveal reveal-delay-3">
+          <div class="product-img-wrap">
+            <div class="product-ph product-ph--4" aria-label="Foto prodotto in arrivo">
+              <span class="product-ph-label">inserisci foto</span>
+            </div>
+            <div class="product-overlay" aria-hidden="true">
+              <span class="product-overlay-icon">✦</span>
+            </div>
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">[Nome prodotto]</h3>
+            <p class="product-desc">[Descrizione del prodotto]</p>
+            <span class="product-tag">I Piccolini</span>
+          </div>
+        </article>
+
+      </div>
+    </div><!-- /piccolini -->
+
+    <!-- Gruppo: Argento -->
+    <div class="collezione-group" data-group="chokers">
+      <div class="products-grid">
+
+        <article class="product-card reveal">
+          <div class="product-img-wrap">
+            <!-- 📸 prod-2.jpg: choker macramè blu notte con pietra -->
+            <img src="images/macrame2.png"
+                 alt="Choker macramè blu notte con pietra"
+                 class="product-img" />
+            <div class="product-overlay" aria-hidden="true">
+              <span class="product-overlay-icon">✦</span>
+            </div>
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">[Nome prodotto]</h3>
+            <p class="product-desc">[Descrizione del prodotto]</p>
+            <span class="product-tag">I Chokers</span>
+          </div>
+        </article>
+
+        <article class="product-card reveal reveal-delay-1">
+          <div class="product-img-wrap">
+            <div class="product-ph product-ph--6" aria-label="Foto prodotto in arrivo">
+              <span class="product-ph-label">inserisci foto</span>
+            </div>
+            <div class="product-overlay" aria-hidden="true">
+              <span class="product-overlay-icon">✦</span>
+            </div>
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">[Nome prodotto]</h3>
+            <p class="product-desc">[Descrizione del prodotto]</p>
+            <span class="product-tag">I Chokers</span>
+          </div>
+        </article>
+
+        <article class="product-card reveal reveal-delay-2">
+          <div class="product-img-wrap">
+            <div class="product-ph product-ph--1" aria-label="Foto prodotto in arrivo">
+              <span class="product-ph-label">inserisci foto</span>
+            </div>
+            <div class="product-overlay" aria-hidden="true">
+              <span class="product-overlay-icon">✦</span>
+            </div>
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">[Nome prodotto]</h3>
+            <p class="product-desc">[Descrizione del prodotto]</p>
+            <span class="product-tag">I Chokers</span>
+          </div>
+        </article>
+
+      </div>
+    </div><!-- /argento -->
+
+    <!-- Gruppo: Elementi -->
+    <div class="collezione-group" data-group="pezzi-unici">
+      <div class="products-grid">
+
+        <article class="product-card reveal">
+          <div class="product-img-wrap">
+            <div class="product-ph product-ph--2" aria-label="Foto prodotto in arrivo">
+              <span class="product-ph-label">inserisci foto</span>
+            </div>
+            <div class="product-overlay" aria-hidden="true">
+              <span class="product-overlay-icon">✦</span>
+            </div>
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">[Nome prodotto]</h3>
+            <p class="product-desc">[Descrizione del prodotto]</p>
+            <span class="product-tag">Pezzi Unici</span>
+          </div>
+        </article>
+
+        <article class="product-card reveal reveal-delay-1">
+          <div class="product-img-wrap">
+            <div class="product-ph product-ph--3" aria-label="Foto prodotto in arrivo">
+              <span class="product-ph-label">inserisci foto</span>
+            </div>
+            <div class="product-overlay" aria-hidden="true">
+              <span class="product-overlay-icon">✦</span>
+            </div>
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">[Nome prodotto]</h3>
+            <p class="product-desc">[Descrizione del prodotto]</p>
+            <span class="product-tag">Pezzi Unici</span>
+          </div>
+        </article>
+
+        <article class="product-card reveal reveal-delay-2">
+          <div class="product-img-wrap">
+            <div class="product-ph product-ph--4" aria-label="Foto prodotto in arrivo">
+              <span class="product-ph-label">inserisci foto</span>
+            </div>
+            <div class="product-overlay" aria-hidden="true">
+              <span class="product-overlay-icon">✦</span>
+            </div>
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">[Nome prodotto]</h3>
+            <p class="product-desc">[Descrizione del prodotto]</p>
+            <span class="product-tag">Pezzi Unici</span>
+          </div>
+        </article>
+
+        <article class="product-card reveal reveal-delay-3">
+          <div class="product-img-wrap">
+            <div class="product-ph product-ph--5" aria-label="Foto prodotto in arrivo">
+              <span class="product-ph-label">inserisci foto</span>
+            </div>
+            <div class="product-overlay" aria-hidden="true">
+              <span class="product-overlay-icon">✦</span>
+            </div>
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">[Nome prodotto]</h3>
+            <p class="product-desc">[Descrizione del prodotto]</p>
+            <span class="product-tag">Pezzi Unici</span>
+          </div>
+        </article>
+
+      </div>
+    </div><!-- /elementi -->
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+  SEPARATORE
+============================================================ -->
+<div class="divider" aria-hidden="true">
+  <span class="divider-line"></span>
+  <span class="divider-symbol">
+    <svg><use href="#sym-air"/></svg>
+    <svg><use href="#sym-diamond"/></svg>
+    <svg><use href="#sym-fire"/></svg>
+  </span>
+  <span class="divider-line"></span>
+</div>
+
+
+<!-- ============================================================
+  MERCATINI & EVENTI
+============================================================ -->
+<section id="eventi" class="section">
+  <div class="container">
+
+    <div class="section-header">
+      <span class="section-label reveal">Dove trovarmi</span>
+      <h2 class="section-title reveal reveal-delay-1">
+        Mercatini <span class="gold">&amp; Appuntamenti</span>
+      </h2>
+      <p class="section-desc reveal reveal-delay-2">
+        [Descrizione della sezione mercatini]
+      </p>
+    </div>
+
+    <!--
+      ╔══════════════════════════════════════════════════════════╗
+      MERCATINI — alimentati da Google Sheets
+
+      SETUP (una tantum):
+      1. Crea un nuovo foglio Google Sheets
+      2. Nella prima riga metti ESATTAMENTE queste intestazioni:
+         GG | Mese | Anno | Nome | Luogo | Città | Descrizione | Prossimo
+      3. Riempi le righe successive con i tuoi eventi
+         (nella colonna "Prossimo" scrivi VERO per evidenziare l'evento)
+      4. Vai su File → Condividi → Pubblica sul web
+         → scegli "Intero documento" e formato "Valori separati da virgola (.csv)"
+         → clicca "Pubblica" e conferma
+      5. Copia l'ID del foglio dall'URL:
+         https://docs.google.com/spreadsheets/d/  QUI_C'È_L'ID  /edit
+      6. Incolla quell'ID in script.js dove c'è scritto INSERISCI_ID_FOGLIO
+
+      Da quel momento: modifica il foglio → il sito si aggiorna da solo!
+      ╚══════════════════════════════════════════════════════════╝
+    -->
+    <div class="eventi-grid" id="eventi-container" aria-live="polite">
+      <p class="eventi-loading">Caricamento eventi…</p>
+    </div><!-- /eventi-container -->
+
+    <div class="divider" aria-hidden="true" style="margin-top:4rem;margin-bottom:0">
+      <span class="divider-line"></span>
+      <span class="divider-symbol">
+        <svg><use href="#sym-water"/></svg>
+        <svg><use href="#sym-diamond"/></svg>
+        <svg><use href="#sym-earth"/></svg>
+      </span>
+      <span class="divider-line"></span>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+  WORKSHOP
+============================================================ -->
+<section id="workshop" class="section">
+  <div class="container">
+
+    <div class="section-header">
+      <span class="section-label reveal">Imparare insieme</span>
+      <h2 class="section-title reveal reveal-delay-1">
+        Workshop
+      </h2>
+      <p class="section-desc reveal reveal-delay-2">
+        [Descrizione introduttiva dei workshop]
+      </p>
+    </div>
+
+    <div class="workshop-grid">
+
+      <article class="workshop-card reveal">
+        <div class="workshop-icon" aria-hidden="true">
+          <svg viewBox="0 0 20 22" fill="none" stroke="currentColor" stroke-width="1.2"><use href="#sym-fire"/></svg>
+        </div>
+        <h3 class="workshop-title">[Nome workshop]</h3>
+        <p class="workshop-desc">
+          [Descrizione del workshop]
+        </p>
+        <div class="workshop-meta">
+          <span class="workshop-meta-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            [Durata]
+          </span>
+          <span class="workshop-meta-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            [N. posti]
+          </span>
+          <span class="workshop-meta-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            [Livello]
+          </span>
+        </div>
+        <a href="#contatti" class="btn-outline">Prenota il tuo posto</a>
+      </article>
+
+    </div><!-- /workshop-grid -->
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+  SEPARATORE
+============================================================ -->
+<div class="divider" aria-hidden="true">
+  <span class="divider-line"></span>
+  <span class="divider-symbol">
+    <svg><use href="#sym-water"/></svg>
+    <svg><use href="#sym-diamond"/></svg>
+    <svg><use href="#sym-fire"/></svg>
+  </span>
+  <span class="divider-line"></span>
+</div>
+
+
+<!-- ============================================================
+  CONTATTI
+============================================================ -->
+<section id="contatti" class="section section--mid">
+  <div class="container">
+
+    <div class="section-header">
+      <span class="section-label reveal">Scrivimi</span>
+      <h2 class="section-title reveal reveal-delay-1">
+        Parliamone <span class="gold">insieme</span>
+      </h2>
+      <p class="section-desc reveal reveal-delay-2">
+        [Descrizione della sezione contatti]
+      </p>
+    </div>
+
+    <div class="contatti-grid">
+
+      <!-- Info -->
+      <div class="reveal">
+        <h3 class="reveal reveal-delay-1" style="font-family:var(--font-title);font-size:1.5rem;color:var(--text-dark);margin-bottom:0.75rem">
+          Dove trovarmi
+        </h3>
+        <p style="color:var(--text-mid);margin-bottom:2rem;max-width:100%">
+          [Frase introduttiva ai contatti]
+        </p>
+
+        <div class="contatti-links">
+
+          <!--
+            📱 SOCIAL: sostituisci il link href con il tuo profilo Instagram reale.
+          -->
+          <a href="https://www.instagram.com/lamaga.alchemy" target="_blank" rel="noopener noreferrer" class="contatti-link">
+            <div class="contatti-link-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+              </svg>
+            </div>
+            <div class="contatti-link-text">
+              <span class="contatti-link-label">Instagram</span>
+              <span class="contatti-link-value">@lamaga.alchemy</span>
+            </div>
+          </a>
+
+          <!--
+            ✉️ EMAIL: sostituisci con la tua email reale.
+          -->
+          <a href="mailto:info@lamagaalchemy.it" class="contatti-link">
+            <div class="contatti-link-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </div>
+            <div class="contatti-link-text">
+              <span class="contatti-link-label">Email</span>
+              <span class="contatti-link-value">info@lamagaalchemy.it</span>
+            </div>
+          </a>
+
+          <!--
+            💬 WHATSAPP: sostituisci con il tuo numero reale.
+          -->
+          <a href="https://wa.me/39XXXXXXXXXX" target="_blank" rel="noopener noreferrer" class="contatti-link">
+            <div class="contatti-link-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+              </svg>
+            </div>
+            <div class="contatti-link-text">
+              <span class="contatti-link-label">WhatsApp</span>
+              <span class="contatti-link-value">+39 xxx xxx xxxx</span>
+            </div>
+          </a>
+
+        </div>
+      </div><!-- /info -->
+
+      <!-- Form -->
+      <div class="reveal reveal-delay-2">
+        <form id="contact-form" class="contact-form" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="nome">Nome *</label>
+              <input class="form-input" type="text" id="nome" name="nome" placeholder="Il tuo nome" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="email">Email *</label>
+              <input class="form-input" type="email" id="email" name="email" placeholder="tuaemail@esempio.it" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="argomento">Argomento</label>
+            <select class="form-select" id="argomento" name="argomento">
+              <option value="">Seleziona un argomento…</option>
+              <option value="commissione">Commissione gioiello personalizzato</option>
+              <option value="workshop">Informazioni workshop</option>
+              <option value="mercatino">Collaborazione mercatini</option>
+              <option value="altro">Altro</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="messaggio">Messaggio *</label>
+            <textarea class="form-textarea" id="messaggio" name="messaggio" placeholder="Raccontami cosa hai in mente…" required></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary">
+            <svg width="14" height="14" viewBox="0 0 20 22" fill="none" aria-hidden="true"><use href="#sym-fire"/></svg>
+            Invia messaggio
+          </button>
+
+          <div id="form-success" class="form-success" role="alert">
+            ✦ Messaggio ricevuto! Ti risponderò presto. Grazie per esserti connessa/o.
+          </div>
+        </form>
+      </div><!-- /form -->
+
+    </div><!-- /contatti-grid -->
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+  FOOTER
+============================================================ -->
+<footer id="footer" role="contentinfo">
+  <div class="footer-bg-deco" aria-hidden="true">
+    <svg viewBox="0 0 600 600" fill="none">
+      <circle cx="300" cy="300" r="280" stroke="#C8952A" stroke-width="1"/>
+      <polygon points="300,40 540,460 60,460" stroke="#C8952A" stroke-width="0.8" fill="none"/>
+      <polygon points="300,560 540,140 60,140" stroke="#C8952A" stroke-width="0.8" fill="none"/>
+    </svg>
+  </div>
+
+  <div class="footer-inner">
+
+    <div class="footer-top">
+      <!-- Brand -->
+      <div class="footer-brand">
+        <a href="#hero" class="logo-wrap" aria-label="Torna all'inizio della pagina">
+          <img src="images/logo.jpg" alt="Logo La Maga Alchemy" class="logo-img" />
+          <div class="logo-text">
+            La Maga Alchemy
+            <span class="logo-sub">Gioielli Artigianali</span>
+          </div>
+        </a>
+        <p class="footer-tagline">
+          "La materia non si crea né si distrugge.<br/>
+          Si trasforma. E diventa arte."
+        </p>
+      </div>
+
+      <!-- Link rapidi -->
+      <div>
+        <p class="footer-col-title">Esplora</p>
+        <ul class="footer-links">
+          <li><a href="#chi-sono"   class="footer-link">Chi sono</a></li>
+          <li><a href="#collezioni" class="footer-link">Collezioni</a></li>
+          <li><a href="#eventi"     class="footer-link">Mercatini &amp; eventi</a></li>
+          <li><a href="#workshop"   class="footer-link">Workshop</a></li>
+          <li><a href="#contatti"   class="footer-link">Contatti</a></li>
+        </ul>
+      </div>
+
+      <!-- Social & info -->
+      <div>
+        <p class="footer-col-title">Connettiti</p>
+        <ul class="footer-links">
+          <li>
+            <!-- 📱 Sostituisci con il link reale -->
+            <a href="https://www.instagram.com/lamaga.alchemy" target="_blank" rel="noopener noreferrer" class="footer-link">
+              Instagram → @lamaga.alchemy
+            </a>
+          </li>
+          <li>
+            <!-- ✉️ Sostituisci con la tua email reale -->
+            <a href="mailto:info@lamagaalchemy.it" class="footer-link">
+              info@lamagaalchemy.it
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div><!-- /footer-top -->
+
+    <!-- Simboli decorativi alchemici -->
+    <div class="footer-symbols" aria-hidden="true" style="justify-content:center;margin-bottom:1.5rem">
+      <svg width="16" height="18" viewBox="0 0 20 22" fill="none" stroke="currentColor" stroke-width="1.5"><use href="#sym-fire"/></svg>
+      <span style="font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:700;color:var(--gold);opacity:0.45">·</span>
+      <svg width="16" height="18" viewBox="0 0 20 22" fill="none" stroke="currentColor" stroke-width="1.5"><use href="#sym-water"/></svg>
+      <span style="font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:700;color:var(--gold);opacity:0.45">·</span>
+      <svg width="16" height="18" viewBox="0 0 20 22" fill="none" stroke="currentColor" stroke-width="1.5"><use href="#sym-earth"/></svg>
+      <span style="font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:700;color:var(--gold);opacity:0.45">·</span>
+      <svg width="16" height="18" viewBox="0 0 20 22" fill="none" stroke="currentColor" stroke-width="1.5"><use href="#sym-air"/></svg>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">
+        &copy; 2025 La Maga Alchemy — Magalì.
+        <!-- Fatto con ✦ a mano. -->
+      </p>
+      <div class="footer-symbols">
+        <svg width="12" height="14" viewBox="0 0 20 22" fill="none" stroke="currentColor" stroke-width="1.5"><use href="#sym-fire"/></svg>
+        <svg width="10" height="10" viewBox="0 0 14 14" fill="none" stroke="none"><use href="#sym-diamond"/></svg>
+        <svg width="12" height="14" viewBox="0 0 20 22" fill="none" stroke="currentColor" stroke-width="1.5"><use href="#sym-water"/></svg>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+
+<!-- Lightbox prodotto -->
+<div class="product-lightbox" id="product-lightbox" aria-hidden="true">
+  <div class="product-lightbox-backdrop" data-lightbox-close></div>
+  <div class="product-lightbox-dialog" role="dialog" aria-modal="true" aria-labelledby="lightbox-name">
+    <button class="product-lightbox-close" type="button" data-lightbox-close aria-label="Chiudi">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="product-lightbox-media" id="lightbox-media"></div>
+    <div class="product-lightbox-info">
+      <h3 class="product-lightbox-name" id="lightbox-name"></h3>
+      <p class="product-lightbox-desc" id="lightbox-desc"></p>
+      <span class="product-lightbox-tag" id="lightbox-tag"></span>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
