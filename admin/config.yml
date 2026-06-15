@@ -138,7 +138,8 @@ collections:
               - label: "Data"
                 name: "data"
                 widget: "datetime"
-                date_format: "yyyy-MM-dd"
+                format: "YYYY-MM-DD"
+                date_format: "DD/MM/YYYY"
                 time_format: false
                 picker_utc: true
               - label: "Luogo"
