@@ -73,6 +73,52 @@ collections:
                 default: false
                 hint: "Per ora è solo un'etichetta interna, non cambia ancora l'aspetto della card."
 
+  - name: "workshop"
+    label: "Workshop"
+    files:
+      - name: "workshop"
+        label: "Workshop"
+        file: "content/workshop.json"
+        fields:
+          - label: "Testo introduttivo"
+            name: "intro"
+            widget: "text"
+            hint: "Breve testo mostrato sopra le card dei workshop."
+          - label: "Corsi"
+            name: "corsi"
+            widget: "list"
+            label_singular: "Corso"
+            summary: "{{nome}}"
+            fields:
+              - label: "Nome workshop"
+                name: "nome"
+                widget: "string"
+              - label: "Descrizione"
+                name: "descrizione"
+                widget: "text"
+              - label: "Durata"
+                name: "durata"
+                widget: "string"
+                hint: "Es: 2 ore"
+              - label: "Numero posti"
+                name: "posti"
+                widget: "string"
+                hint: "Es: Max 6 persone"
+              - label: "Livello"
+                name: "livello"
+                widget: "string"
+                hint: "Es: Adatto a tutti"
+              - label: "Icona"
+                name: "icona"
+                widget: "select"
+                options:
+                  - { label: "Fuoco", value: "fire" }
+                  - { label: "Acqua", value: "water" }
+                  - { label: "Terra", value: "earth" }
+                  - { label: "Aria", value: "air" }
+                  - { label: "Diamante", value: "diamond" }
+                default: "fire"
+
   - name: "eventi"
     label: "Mercatini & Eventi"
     files:

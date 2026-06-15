@@ -301,6 +301,82 @@ observeReveal();
 
 
 /* ================================================================
+   WORKSHOP — alimentati da Decap CMS (content/workshop.json)
+   ================================================================
+   Magalì gestisce i corsi dal pannello /admin senza toccare il
+   codice. Riusiamo lo stesso markup/classi delle card workshop.
+   ================================================================ */
+(function () {
+  const grid = document.getElementById('workshop-grid');
+  const introEl = document.getElementById('workshop-intro');
+  if (!grid) return;
+
+  function renderWorkshopCard(corso, index) {
+    const delay = index > 0 ? ` reveal-delay-${Math.min(index, 3)}` : '';
+    const icona = corso.icona || 'fire';
+
+    return `
+      <article class="workshop-card reveal${delay}">
+        <div class="workshop-icon" aria-hidden="true">
+          <svg viewBox="0 0 20 22" fill="none" stroke="currentColor" stroke-width="1.2"><use href="#sym-${escHtml(icona)}"/></svg>
+        </div>
+        <h3 class="workshop-title">${escHtml(corso.nome || '')}</h3>
+        <p class="workshop-desc">
+          ${escHtml(corso.descrizione || '')}
+        </p>
+        <div class="workshop-meta">
+          <span class="workshop-meta-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            ${escHtml(corso.durata || '')}
+          </span>
+          <span class="workshop-meta-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            ${escHtml(corso.posti || '')}
+          </span>
+          <span class="workshop-meta-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            ${escHtml(corso.livello || '')}
+          </span>
+        </div>
+        <a href="#contatti" class="btn-outline">Prenota il tuo posto</a>
+      </article>`;
+  }
+
+  fetch('/content/workshop.json')
+    .then(r => {
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+      return r.json();
+    })
+    .then(data => {
+      if (introEl && data.intro) introEl.textContent = data.intro;
+
+      const corsi = Array.isArray(data.corsi) ? data.corsi : [];
+
+      if (!corsi.length) {
+        grid.innerHTML = `
+          <article class="workshop-card reveal">
+            <div class="workshop-icon" aria-hidden="true">
+              <svg viewBox="0 0 20 22" fill="none" stroke="currentColor" stroke-width="1.2"><use href="#sym-diamond"/></svg>
+            </div>
+            <h3 class="workshop-title">Nuovi workshop in arrivo</h3>
+            <p class="workshop-desc">
+              Sto preparando nuovi laboratori: torna a trovarmi presto per scoprirli!
+            </p>
+          </article>`;
+        return;
+      }
+
+      grid.innerHTML = corsi.map((corso, i) => renderWorkshopCard(corso, i)).join('');
+      observeReveal(grid);
+    })
+    .catch(err => {
+      console.error('[Workshop] errore:', err.message);
+      grid.innerHTML = '<p class="eventi-empty">Impossibile caricare i workshop al momento.</p>';
+    });
+})();
+
+
+/* ================================================================
    MERCATINI & EVENTI — alimentati da Decap CMS (content/eventi.json)
    ================================================================
    Magalì gestisce gli eventi dal pannello /admin senza toccare il

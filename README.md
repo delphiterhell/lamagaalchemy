@@ -10,6 +10,8 @@ GitHub:
 
 - **Collezioni** (I Piccolini, I Chokers, Pezzi Unici): nome, descrizione,
   categoria, foto, "in evidenza"
+- **Workshop**: testo introduttivo della sezione, e per ogni corso: nome,
+  descrizione, durata, numero posti, livello, icona
 - **Mercatini & Eventi**: nome evento, data, luogo, note
 
 tramite un pannello di amministrazione visuale all'indirizzo:
@@ -22,9 +24,10 @@ Il pannello è basato su **Decap CMS**, con autenticazione gestita da
 **DecapBridge** (gratuito, sostituisce Netlify Identity che è stato
 deprecato).
 
-I contenuti vengono salvati in due file nel repository:
+I contenuti vengono salvati in tre file nel repository:
 
 - `content/collezioni.json`
+- `content/workshop.json`
 - `content/eventi.json`
 
 Il sito li legge automaticamente e genera le card — non serve nessun
@@ -96,6 +99,24 @@ Il sito è già stato registrato su DecapBridge, collegato al repository
   foto" (coerente con lo stile del sito).
 - `in_evidenza` è salvato ma per ora non ha ancora un effetto visivo sul
   sito.
+
+### `content/workshop.json`
+
+```json
+{
+  "intro": "Testo introduttivo mostrato sopra le card",
+  "corsi": [
+    {
+      "nome": "Nome del workshop",
+      "descrizione": "Testo descrittivo",
+      "durata": "2 ore",
+      "posti": "Max 6 persone",
+      "livello": "Adatto a tutti",
+      "icona": "fire"   // fire | water | earth | air | diamond
+    }
+  ]
+}
+```
 
 ### `content/eventi.json`
 

@@ -1,0 +1,29 @@
+{
+  "intro": "Scopri l'arte del macramè in un percorso pensato per tutti i livelli: dai primi nodi ai pezzi unici da indossare.",
+  "corsi": [
+    {
+      "nome": "Macramè per principianti",
+      "descrizione": "Un primo approccio alla tecnica del macramè: impara i nodi base e realizza il tuo primo braccialetto da portare a casa.",
+      "durata": "2 ore",
+      "posti": "Max 6 persone",
+      "livello": "Adatto a tutti",
+      "icona": "fire"
+    },
+    {
+      "nome": "Collane e choker in macramè",
+      "descrizione": "Approfondisci le tecniche di intreccio per realizzare collane e choker con pietre naturali, da personalizzare a piacere.",
+      "durata": "3 ore",
+      "posti": "Max 6 persone",
+      "livello": "Livello intermedio",
+      "icona": "water"
+    },
+    {
+      "nome": "Pezzi unici alchemici",
+      "descrizione": "Un laboratorio creativo per realizzare un pezzo unico combinando macramè, cristalli e dettagli in ottone.",
+      "durata": "3 ore",
+      "posti": "Max 4 persone",
+      "livello": "Livello avanzato",
+      "icona": "diamond"
+    }
+  ]
+}
