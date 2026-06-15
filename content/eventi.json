@@ -1,12 +1,6 @@
 {
   "eventi": [
     {
-      "nome": "Mercatino di Primavera",
-      "data": "2026-05-10",
-      "luogo": "Piazza San Carlo, Torino",
-      "note": "Banchetto con le ultime creazioni della collezione Piccolini."
-    },
-    {
       "nome": "Mercatino Estivo dell'Artigianato",
       "data": "2026-07-12",
       "luogo": "Lungo Po, Torino",
@@ -17,6 +11,11 @@
       "data": "2026-09-20",
       "luogo": "Piazza della Repubblica, Asti",
       "note": ""
+    },
+    {
+      "nome": "Mercatino estivo",
+      "luogo": "Via oberdan 18",
+      "note": "Mi troverai con il mio banchetto"
     }
   ]
 }
