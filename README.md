@@ -39,40 +39,14 @@ Questi passaggi NON possono essere fatti da Claude: richiedono un account
 personale, email, e click su interfacce web di terze parti. Vanno fatti
 una sola volta, con calma.
 
-### 1. Crea un account su DecapBridge
+### 1. Account DecapBridge e collegamento del repo ✅ fatto
 
-1. Vai su **https://decapbridge.com** e clicca su "Sign up" / "Get started".
-2. Registrati (puoi usare il tuo account GitHub per accedere più
-   velocemente).
+Il sito è già stato registrato su DecapBridge, collegato al repository
+`delphiterhell/lamagaalchemy` (branch `main`), con autenticazione
+**Classic** (email/password). Il file [`admin/config.yml`](admin/config.yml)
+è già configurato con il Site ID corretto.
 
-### 2. Collega il repository del sito
-
-1. Nella dashboard di DecapBridge clicca su **"Create site"** / **"Add
-   site"**.
-2. Scegli **GitHub** come provider Git.
-3. Seleziona il repository **`delphiterhell/lamagaalchemy`**.
-4. Quando richiesto, indica:
-   - **Decap CMS login URL**: `https://<il-tuo-sito>.netlify.app/admin/index.html`
-   - **Branch**: `main`
-5. Scegli il tipo di autenticazione (va benissimo **Classic**, con
-   email/password — più semplice per Magalì).
-6. Al termine, DecapBridge ti mostrerà un **Site ID** (qualcosa come
-   `abcd1234-...`).
-
-### 3. Aggiorna il file di configurazione del CMS
-
-1. Apri il file [`admin/config.yml`](admin/config.yml) in questo
-   repository.
-2. Trova la riga:
-   ```yaml
-   identity_url: https://auth.decapbridge.com/sites/INSERISCI-SITE-ID
-   ```
-3. Sostituisci `INSERISCI-SITE-ID` con il Site ID che ti ha dato
-   DecapBridge al passo precedente.
-4. Salva e fai il commit/push della modifica (o chiedi a Claude di farlo
-   per te, indicandogli il Site ID).
-
-### 4. Invita Magalì
+### 2. Invita Magalì
 
 1. Sempre dalla dashboard di DecapBridge, nella sezione del sito che hai
    creato, cerca **"Invite user"** / **"Add collaborator"**.
@@ -80,7 +54,7 @@ una sola volta, con calma.
 3. Magalì riceverà un'email con un link per impostare la password e
    accedere al pannello su `/admin`.
 
-### 5. Verifica su Netlify (di solito non serve nulla)
+### 3. Verifica su Netlify (di solito non serve nulla)
 
 - L'**Image CDN** di Netlify (usata per ottimizzare le foto caricate da
   Magalì) è **già attiva di default** su tutti i siti Netlify: non serve
@@ -89,9 +63,9 @@ una sola volta, con calma.
   branch di produzione sia **`main`** (Site settings → Build & deploy →
   Branches).
 
-### 6. Primo test
+### 4. Primo test
 
-1. Vai su `https://<il-tuo-sito>.netlify.app/admin`.
+1. Vai su `https://lamaga-alchemy.netlify.app/admin`.
 2. Accedi con le credenziali create da Magalì (o le tue, per testare).
 3. Apri **"Collezioni"** o **"Mercatini & Eventi"**, modifica una voce e
    clicca su **"Publish"**.
