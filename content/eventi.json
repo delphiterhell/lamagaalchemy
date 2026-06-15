@@ -1,0 +1,22 @@
+{
+  "eventi": [
+    {
+      "nome": "Mercatino di Primavera",
+      "data": "2026-05-10",
+      "luogo": "Piazza San Carlo, Torino",
+      "note": "Banchetto con le ultime creazioni della collezione Piccolini."
+    },
+    {
+      "nome": "Mercatino Estivo dell'Artigianato",
+      "data": "2026-07-12",
+      "luogo": "Lungo Po, Torino",
+      "note": "Anteprima dei nuovi pezzi unici in macramè e cristalli."
+    },
+    {
+      "nome": "Fiera d'Autunno",
+      "data": "2026-09-20",
+      "luogo": "Piazza della Repubblica, Asti",
+      "note": ""
+    }
+  ]
+}

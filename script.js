@@ -2,6 +2,34 @@
    LA MAGA ALCHEMY — script.js
    ============================================= */
 
+/* --- Helpers condivisi --- */
+function escHtml(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+/* --- Reveal on scroll (Intersection Observer) ---
+   Condiviso: usato sia per gli elementi statici sia per le card
+   generate dinamicamente da Collezioni ed Eventi. */
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+);
+
+function observeReveal(root) {
+  (root || document).querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+}
+
 /* --- Header: cambia stile allo scroll --- */
 (function () {
   const header = document.getElementById('header');
@@ -34,25 +62,8 @@
   });
 })();
 
-/* --- Reveal on scroll (Intersection Observer) --- */
-(function () {
-  const els = document.querySelectorAll('.reveal');
-  if (!els.length) return;
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
-  );
-
-  els.forEach(el => observer.observe(el));
-})();
+/* --- Attiva le animazioni reveal sugli elementi statici --- */
+observeReveal();
 
 /* --- Tabs collezioni --- */
 (function () {
@@ -74,7 +85,9 @@
   });
 })();
 
-/* --- Lightbox prodotto: apre immagine + descrizione al click --- */
+/* --- Lightbox prodotto: apre immagine + descrizione al click ---
+   Usa event delegation così funziona anche con le card
+   generate dinamicamente dalle Collezioni. */
 (function () {
   const lightbox = document.getElementById('product-lightbox');
   if (!lightbox) return;
@@ -115,24 +128,26 @@
     if (lastFocused) lastFocused.focus();
   }
 
-  document.querySelectorAll('.product-card').forEach(card => {
-    card.addEventListener('click', () => open(card));
-    card.setAttribute('tabindex', '0');
-    card.setAttribute('role', 'button');
-    card.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        open(card);
-      }
-    });
+  document.addEventListener('click', (e) => {
+    const card = e.target.closest('.product-card');
+    if (card) open(card);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lightbox.classList.contains('open')) {
+      close();
+      return;
+    }
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    const card = e.target.closest('.product-card');
+    if (card) {
+      e.preventDefault();
+      open(card);
+    }
   });
 
   lightbox.querySelectorAll('[data-lightbox-close]').forEach(el => {
     el.addEventListener('click', close);
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && lightbox.classList.contains('open')) close();
   });
 })();
 
@@ -201,164 +216,158 @@
 
 
 /* ================================================================
-   MERCATINI DA GOOGLE SHEETS
+   COLLEZIONI — alimentate da Decap CMS (content/collezioni.json)
    ================================================================
-   Setup: vedi le istruzioni nel commento HTML della sezione eventi.
+   Magalì gestisce i pezzi dal pannello /admin senza toccare il
+   codice. Qui leggiamo il JSON e generiamo le card riusando
+   esattamente lo stesso markup/classi CSS di prima.
 
-   1. Pubblica il tuo foglio Google Sheets come CSV
-      (File → Condividi → Pubblica sul web → CSV)
-   2. Copia l'ID del foglio dall'URL e incollalo qui sotto:
+   Le foto vengono servite tramite Netlify Image CDN
+   (/.netlify/images?url=...) così Magalì può caricare foto pesanti
+   dal telefono senza doverle ridimensionare a mano.
    ================================================================ */
 (function () {
+  const CATEGORIE = {
+    'piccolini':   'I Piccolini',
+    'chokers':     'I Chokers',
+    'pezzi-unici': 'Pezzi Unici'
+  };
 
-  // ▼ INCOLLA QUI l'ID del tuo foglio Google Sheets ▼
-  const SHEET_ID = '12vZzkT6LEmMibRkJna4AsOO-ucupTFNSvtJkOVOY6oM';
-  // ▲ esempio: '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgVE2upms' ▲
-
-  // Nome del foglio (tab in basso). Default: il primo foglio.
-  const SHEET_NAME = 'Foglio1';
-
-  // ----------------------------------------------------------------
-
-  const container = document.getElementById('eventi-container');
-  if (!container || SHEET_ID === 'INSERISCI_ID_FOGLIO') {
-    // ID non ancora configurato: mostra messaggio placeholder
-    if (container) {
-      container.innerHTML = renderEmpty('Nessun evento in programma al momento.');
-    }
-    return;
+  function productImageUrl(foto) {
+    const path = foto.startsWith('/') ? foto : `/${foto}`;
+    return `/.netlify/images?url=${encodeURIComponent(path)}&w=600&q=75`;
   }
 
-  // CSV: semplice, senza problemi di tipo booleano
-  const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv`;
+  function renderProductCard(pezzo, index, tagLabel) {
+    const delay = index > 0 ? ` reveal-delay-${Math.min(index, 3)}` : '';
+    const nome = pezzo.nome || '';
+    const descrizione = pezzo.descrizione || '';
+
+    const media = pezzo.foto
+      ? `<img src="${productImageUrl(pezzo.foto)}" alt="${escHtml(nome)}" class="product-img" loading="lazy" />`
+      : `<div class="product-ph product-ph--${(index % 6) + 1}" aria-label="Foto prodotto in arrivo">
+           <span class="product-ph-label">inserisci foto</span>
+         </div>`;
+
+    return `
+      <article class="product-card reveal${delay}" tabindex="0" role="button">
+        <div class="product-img-wrap">
+          ${media}
+          <div class="product-overlay" aria-hidden="true">
+            <span class="product-overlay-icon">✦</span>
+          </div>
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">${escHtml(nome)}</h3>
+          <p class="product-desc">${escHtml(descrizione)}</p>
+          <span class="product-tag">${escHtml(tagLabel)}</span>
+        </div>
+      </article>`;
+  }
+
+  fetch('/content/collezioni.json')
+    .then(r => {
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+      return r.json();
+    })
+    .then(data => {
+      const pezzi = Array.isArray(data.pezzi) ? data.pezzi : [];
+
+      Object.keys(CATEGORIE).forEach(categoria => {
+        const grid = document.querySelector(`.products-grid[data-products-grid="${categoria}"]`);
+        if (!grid) return;
+
+        const items = pezzi.filter(p => p.categoria === categoria);
+
+        if (!items.length) {
+          grid.innerHTML = '<p class="eventi-empty">Presto nuovi pezzi in questa collezione!</p>';
+          return;
+        }
+
+        grid.innerHTML = items
+          .map((pezzo, i) => renderProductCard(pezzo, i, CATEGORIE[categoria]))
+          .join('');
+
+        observeReveal(grid);
+      });
+    })
+    .catch(err => {
+      console.error('[Collezioni] errore:', err.message);
+      document.querySelectorAll('.products-grid[data-products-grid]').forEach(grid => {
+        grid.innerHTML = '<p class="eventi-empty">Impossibile caricare la collezione al momento.</p>';
+      });
+    });
+})();
+
+
+/* ================================================================
+   MERCATINI & EVENTI — alimentati da Decap CMS (content/eventi.json)
+   ================================================================
+   Magalì gestisce gli eventi dal pannello /admin senza toccare il
+   codice. Il prossimo evento futuro riceve automaticamente
+   l'etichetta "Prossimo".
+   ================================================================ */
+(function () {
+  const MESI = ['GEN', 'FEB', 'MAR', 'APR', 'MAG', 'GIU', 'LUG', 'AGO', 'SET', 'OTT', 'NOV', 'DIC'];
+
+  const container = document.getElementById('eventi-container');
+  if (!container) return;
 
   container.innerHTML = '<p class="eventi-loading">Caricamento eventi…</p>';
 
-  fetch(url)
+  fetch('/content/eventi.json')
     .then(r => {
       if (!r.ok) throw new Error(`HTTP ${r.status}`);
-      return r.text();
+      return r.json();
     })
-    .then(csv => {
-      const rows = parseCSV(csv);
-      if (rows.length < 2) {
+    .then(data => {
+      const eventi = Array.isArray(data.eventi) ? data.eventi : [];
+
+      if (!eventi.length) {
         container.innerHTML = renderEmpty('Nessun evento in programma al momento.<br>Seguimi su Instagram per aggiornamenti!');
         return;
       }
 
-      // Prima riga = intestazioni
-      const headers = rows[0].map(h => h.toLowerCase().trim());
-      const idx = name => {
-        const i = headers.indexOf(name.toLowerCase());
-        return i >= 0 ? i : -1;
-      };
+      // Ordina cronologicamente
+      const sorted = [...eventi].sort((a, b) => String(a.data).localeCompare(String(b.data)));
 
-      // Righe dati (salta riga header, salta righe vuote)
-      const dataRows = rows.slice(1).filter(r => r.some(v => v.trim()));
+      // Il primo evento con data >= oggi è il "Prossimo"
+      const todayStr = new Date().toISOString().slice(0, 10);
+      const prossimo = sorted.find(ev => String(ev.data) >= todayStr);
 
-      if (dataRows.length === 0) {
-        container.innerHTML = renderEmpty('Nessun evento in programma al momento.<br>Seguimi su Instagram per aggiornamenti!');
-        return;
-      }
-
-      container.innerHTML = dataRows.map((r, i) => {
-        const get = name => {
-          const i = idx(name);
-          return i >= 0 ? (r[i] ?? '').trim() : '';
-        };
-
-        const gg         = get('gg');
-        const mese       = get('mese');
-        const anno       = get('anno');
-        const nome       = get('nome');
-        const luogo      = get('luogo');
-        const citta      = get('città') || get('citta');
-        let desc         = get('descrizione');
-        const rawProssimo = get('prossimo');
-
-        // Rimuovi eventuale VERO/FALSO in coda alla descrizione (overflow da G→H)
-        const trailing = desc.match(/\s+(VERO|FALSO|TRUE|FALSE|SI|SÌ|NO)$/i);
-        if (trailing) desc = desc.slice(0, -trailing[0].length).trim();
-
-        // La colonna H (Prossimo) ha la priorità assoluta se non è vuota;
-        // altrimenti usa l'eventuale valore estratto dall'overflow in G.
-        let isProssimo;
-        if (rawProssimo) {
-          isProssimo = /vero|true|sì|si|yes|1/i.test(rawProssimo);
-        } else {
-          isProssimo = trailing ? /vero|true|sì|si|yes/i.test(trailing[1]) : false;
-        }
-        const luogoText  = [luogo, citta].filter(Boolean).join(', ');
-        const delay      = i > 0 ? ` reveal-delay-${Math.min(i, 3)}` : '';
+      container.innerHTML = sorted.map((ev, i) => {
+        const dataStr = String(ev.data || '');
+        const [anno, mese, giorno] = dataStr.split('-');
+        const meseAbbr = mese ? MESI[parseInt(mese, 10) - 1] : '';
+        const delay = i > 0 ? ` reveal-delay-${Math.min(i, 3)}` : '';
+        const isProssimo = prossimo && ev === prossimo;
 
         return `
           <article class="evento-card reveal${delay}">
-            <div class="evento-date">${gg}</div>
-            <span class="evento-month">${mese}${anno ? ' ' + anno : ''}</span>
+            <div class="evento-date">${giorno ? parseInt(giorno, 10) : ''}</div>
+            <span class="evento-month">${meseAbbr}${anno ? ' ' + anno : ''}</span>
             ${isProssimo ? '<div class="evento-badge">Prossimo</div>' : ''}
-            <h3 class="evento-nome">${escHtml(nome)}</h3>
-            ${luogoText ? `
+            <h3 class="evento-nome">${escHtml(ev.nome || '')}</h3>
+            ${ev.luogo ? `
             <p class="evento-luogo">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
                 <circle cx="12" cy="9" r="2.5"/>
               </svg>
-              ${escHtml(luogoText)}
+              ${escHtml(ev.luogo)}
             </p>` : ''}
-            ${desc ? `<p class="evento-desc">${escHtml(desc)}</p>` : ''}
+            ${ev.note ? `<p class="evento-desc">${escHtml(ev.note)}</p>` : ''}
           </article>`;
       }).join('');
 
-      // Attiva le animazioni reveal sulle card appena inserite
-      container.querySelectorAll('.reveal').forEach(el => {
-        const io = new IntersectionObserver((entries) => {
-          entries.forEach(e => {
-            if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
-          });
-        }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
-        io.observe(el);
-      });
+      observeReveal(container);
     })
     .catch(err => {
-      console.error('[Mercatini] errore:', err.message);
+      console.error('[Eventi] errore:', err.message);
       container.innerHTML = renderEmpty('Impossibile caricare gli eventi.<br>Riprova più tardi o visita il profilo Instagram.');
     });
-
-  /* Minimal CSV parser: gestisce virgolette e virgole nei valori */
-  function parseCSV(text) {
-    const results = [];
-    const lines = text.replace(/\r\n?/g, '\n').split('\n');
-    lines.forEach(line => {
-      if (!line.trim()) return;
-      const cells = [];
-      let cur = '', inQ = false;
-      for (let i = 0; i < line.length; i++) {
-        const ch = line[i];
-        if (ch === '"') {
-          if (inQ && line[i + 1] === '"') { cur += '"'; i++; }
-          else inQ = !inQ;
-        } else if (ch === ',' && !inQ) {
-          cells.push(cur); cur = '';
-        } else {
-          cur += ch;
-        }
-      }
-      cells.push(cur);
-      results.push(cells);
-    });
-    return results;
-  }
 
   function renderEmpty(msg) {
     return `<p class="eventi-empty">${msg}</p>`;
   }
-
-  function escHtml(str) {
-    return String(str)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;');
-  }
-
 })();

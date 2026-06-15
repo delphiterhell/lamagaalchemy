@@ -1,0 +1,46 @@
+{
+  "pezzi": [
+    {
+      "nome": "Collana macramè bordeaux con labradorite",
+      "categoria": "piccolini",
+      "descrizione": "Collana annodata a mano in macramè bordeaux con pietra di labradorite, dai riflessi cangianti.",
+      "foto": "/images/macrame1.png",
+      "in_evidenza": true
+    },
+    {
+      "nome": "Bracciale Piccolino in cotone naturale",
+      "categoria": "piccolini",
+      "descrizione": "Bracciale leggero in cotone naturale con piccola perla di quarzo, regolabile a scorrimento.",
+      "foto": "",
+      "in_evidenza": false
+    },
+    {
+      "nome": "Choker macramè blu notte con pietra",
+      "categoria": "chokers",
+      "descrizione": "Choker in macramè blu notte impreziosito da una pietra centrale, chiusura a scorrimento.",
+      "foto": "/images/macrame2.png",
+      "in_evidenza": false
+    },
+    {
+      "nome": "Choker minimal in argento e nodo celtico",
+      "categoria": "chokers",
+      "descrizione": "Choker sottile con dettaglio in argento 925 e nodo celtico annodato a mano.",
+      "foto": "",
+      "in_evidenza": false
+    },
+    {
+      "nome": "Collana pezzo unico con cristallo di rocca",
+      "categoria": "pezzi-unici",
+      "descrizione": "Pezzo unico realizzato con cristallo di rocca grezzo, incastonato in una trama di macramè dorato.",
+      "foto": "/images/macrame3.png",
+      "in_evidenza": true
+    },
+    {
+      "nome": "Ciondolo alchemico in ottone e ametista",
+      "categoria": "pezzi-unici",
+      "descrizione": "Ciondolo simbolico in ottone lavorato a mano con ametista grezza, su cordino in macramè.",
+      "foto": "",
+      "in_evidenza": false
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+# ============================================================
+# CONFIGURAZIONE DECAP CMS — La Maga Alchemy
+#
+# Autenticazione gestita tramite DecapBridge (decapbridge.com).
+# ⚠️ AZIONE RICHIESTA: sostituisci INSERISCI-SITE-ID qui sotto con
+# l'ID del sito che ottieni creando il progetto su DecapBridge.
+# Le istruzioni passo-passo sono nel file README.md.
+# ============================================================
+
+backend:
+  name: git-gateway
+  repo: delphiterhell/lamagaalchemy
+  branch: main
+  identity_url: https://auth.decapbridge.com/sites/INSERISCI-SITE-ID
+  gateway_url: https://gateway.decapbridge.com
+
+# Interfaccia del pannello in italiano
+locale: "it"
+
+# Le foto caricate da Magalì vengono salvate qui nel repo
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "collezioni"
+    label: "Collezioni"
+    files:
+      - name: "collezioni"
+        label: "Pezzi delle collezioni"
+        file: "content/collezioni.json"
+        fields:
+          - label: "Pezzi"
+            name: "pezzi"
+            widget: "list"
+            label_singular: "Pezzo"
+            summary: "{{nome}}"
+            fields:
+              - label: "Nome del pezzo"
+                name: "nome"
+                widget: "string"
+              - label: "Categoria"
+                name: "categoria"
+                widget: "select"
+                options:
+                  - { label: "I Piccolini", value: "piccolini" }
+                  - { label: "I Chokers", value: "chokers" }
+                  - { label: "Pezzi Unici", value: "pezzi-unici" }
+              - label: "Descrizione"
+                name: "descrizione"
+                widget: "text"
+              - label: "Foto"
+                name: "foto"
+                widget: "image"
+                required: false
+                hint: "Carica la foto dal telefono: viene ottimizzata automaticamente dal sito."
+              - label: "In evidenza"
+                name: "in_evidenza"
+                widget: "boolean"
+                required: false
+                default: false
+                hint: "Per ora è solo un'etichetta interna, non cambia ancora l'aspetto della card."
+
+  - name: "eventi"
+    label: "Mercatini & Eventi"
+    files:
+      - name: "eventi"
+        label: "Lista eventi"
+        file: "content/eventi.json"
+        fields:
+          - label: "Eventi"
+            name: "eventi"
+            widget: "list"
+            label_singular: "Evento"
+            summary: "{{nome}} – {{data}}"
+            fields:
+              - label: "Nome evento"
+                name: "nome"
+                widget: "string"
+              - label: "Data"
+                name: "data"
+                widget: "date"
+                date_format: "yyyy-MM-dd"
+                time_format: false
+              - label: "Luogo"
+                name: "luogo"
+                widget: "string"
+              - label: "Note"
+                name: "note"
+                widget: "text"
+                required: false
