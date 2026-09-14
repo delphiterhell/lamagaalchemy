@@ -58,14 +58,19 @@ collections:
                   - { label: "I Piccolini", value: "piccolini" }
                   - { label: "I Chokers", value: "chokers" }
                   - { label: "Pezzi Unici", value: "pezzi-unici" }
+                  - { label: "Mandala", value: "mandala" }
               - label: "Descrizione"
                 name: "descrizione"
                 widget: "text"
               - label: "Foto"
                 name: "foto"
-                widget: "image"
+                widget: "list"
                 required: false
-                hint: "Carica la foto dal telefono: viene ottimizzata automaticamente dal sito."
+                hint: "Carica una o più foto dal telefono: vengono ottimizzate automaticamente dal sito. La prima foto è quella mostrata nella card, le altre si vedono scorrendo nel popup."
+                field:
+                  label: "Immagine"
+                  name: "immagine"
+                  widget: "image"
               - label: "In evidenza"
                 name: "in_evidenza"
                 widget: "boolean"

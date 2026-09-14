@@ -11,6 +11,14 @@ function escHtml(str) {
     .replace(/"/g, '&quot;');
 }
 
+/* Le foto vengono servite tramite Netlify Image CDN
+   (/.netlify/images?url=...) così Magalì può caricare foto pesanti
+   dal telefono senza doverle ridimensionare a mano. */
+function productImageUrl(foto) {
+  const path = foto.startsWith('/') ? foto : `/${foto}`;
+  return `/.netlify/images?url=${encodeURIComponent(path)}&w=600&q=75`;
+}
+
 /* --- Reveal on scroll (Intersection Observer) ---
    Condiviso: usato sia per gli elementi statici sia per le card
    generate dinamicamente da Collezioni ed Eventi. */
@@ -97,17 +105,40 @@ observeReveal();
   const descEl = document.getElementById('lightbox-desc');
   const tagEl = document.getElementById('lightbox-tag');
   let lastFocused = null;
+  let galleryFoto = [];
+  let galleryIndex = 0;
+  let galleryPh = '';
+  let galleryAlt = '';
+
+  function renderGallery() {
+    if (!galleryFoto.length) {
+      media.innerHTML = galleryPh;
+      return;
+    }
+    const arrows = galleryFoto.length > 1
+      ? `<button type="button" class="product-lightbox-nav product-lightbox-nav--prev" data-gallery-prev aria-label="Foto precedente">‹</button>
+         <button type="button" class="product-lightbox-nav product-lightbox-nav--next" data-gallery-next aria-label="Foto successiva">›</button>
+         <div class="product-lightbox-dots">
+           ${galleryFoto.map((_, i) => `<span class="product-lightbox-dot${i === galleryIndex ? ' active' : ''}"></span>`).join('')}
+         </div>`
+      : '';
+    media.innerHTML = `<img src="${productImageUrl(galleryFoto[galleryIndex])}" alt="${galleryAlt}" />${arrows}`;
+  }
 
   function open(card) {
-    const img = card.querySelector('.product-img');
-    const ph = card.querySelector('.product-ph');
     const name = card.querySelector('.product-name');
     const desc = card.querySelector('.product-desc');
     const tag = card.querySelector('.product-tag');
+    const ph = card.querySelector('.product-ph');
 
-    media.innerHTML = img
-      ? `<img src="${img.getAttribute('src')}" alt="${img.getAttribute('alt') || ''}" />`
-      : (ph ? ph.outerHTML : '');
+    let foto = [];
+    try { foto = JSON.parse(card.getAttribute('data-foto') || '[]'); } catch (e) { foto = []; }
+
+    galleryFoto = Array.isArray(foto) ? foto : [];
+    galleryIndex = 0;
+    galleryPh = ph ? ph.outerHTML : '';
+    galleryAlt = name ? escHtml(name.textContent.trim()) : '';
+    renderGallery();
 
     nameEl.textContent = name ? name.textContent.trim() : '';
     descEl.textContent = desc ? desc.textContent.trim() : '';
@@ -128,22 +159,35 @@ observeReveal();
     if (lastFocused) lastFocused.focus();
   }
 
+  function showPrev() {
+    if (galleryFoto.length < 2) return;
+    galleryIndex = (galleryIndex - 1 + galleryFoto.length) % galleryFoto.length;
+    renderGallery();
+  }
+
+  function showNext() {
+    if (galleryFoto.length < 2) return;
+    galleryIndex = (galleryIndex + 1) % galleryFoto.length;
+    renderGallery();
+  }
+
   document.addEventListener('click', (e) => {
+    if (e.target.closest('[data-gallery-prev]')) { showPrev(); return; }
+    if (e.target.closest('[data-gallery-next]')) { showNext(); return; }
     const card = e.target.closest('.product-card');
     if (card) open(card);
   });
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && lightbox.classList.contains('open')) {
-      close();
+    if (!lightbox.classList.contains('open')) {
+      if (e.key !== 'Enter' && e.key !== ' ') return;
+      const card = e.target.closest('.product-card');
+      if (card) { e.preventDefault(); open(card); }
       return;
     }
-    if (e.key !== 'Enter' && e.key !== ' ') return;
-    const card = e.target.closest('.product-card');
-    if (card) {
-      e.preventDefault();
-      open(card);
-    }
+    if (e.key === 'Escape') { close(); return; }
+    if (e.key === 'ArrowLeft') { showPrev(); return; }
+    if (e.key === 'ArrowRight') { showNext(); }
   });
 
   lightbox.querySelectorAll('[data-lightbox-close]').forEach(el => {
@@ -230,27 +274,24 @@ observeReveal();
   const CATEGORIE = {
     'piccolini':   'I Piccolini',
     'chokers':     'I Chokers',
-    'pezzi-unici': 'Pezzi Unici'
+    'pezzi-unici': 'Pezzi Unici',
+    'mandala':     'Mandala'
   };
-
-  function productImageUrl(foto) {
-    const path = foto.startsWith('/') ? foto : `/${foto}`;
-    return `/.netlify/images?url=${encodeURIComponent(path)}&w=600&q=75`;
-  }
 
   function renderProductCard(pezzo, index, tagLabel) {
     const delay = index > 0 ? ` reveal-delay-${Math.min(index, 3)}` : '';
     const nome = pezzo.nome || '';
     const descrizione = pezzo.descrizione || '';
+    const foto = Array.isArray(pezzo.foto) ? pezzo.foto.filter(Boolean) : (pezzo.foto ? [pezzo.foto] : []);
 
-    const media = pezzo.foto
-      ? `<img src="${productImageUrl(pezzo.foto)}" alt="${escHtml(nome)}" class="product-img" loading="lazy" />`
+    const media = foto.length
+      ? `<img src="${productImageUrl(foto[0])}" alt="${escHtml(nome)}" class="product-img" loading="lazy" />`
       : `<div class="product-ph product-ph--${(index % 6) + 1}" aria-label="Foto prodotto in arrivo">
            <span class="product-ph-label">inserisci foto</span>
          </div>`;
 
     return `
-      <article class="product-card reveal${delay}" tabindex="0" role="button">
+      <article class="product-card reveal${delay}" tabindex="0" role="button" data-foto="${escHtml(JSON.stringify(foto))}">
         <div class="product-img-wrap">
           ${media}
           <div class="product-overlay" aria-hidden="true">
@@ -354,10 +395,7 @@ observeReveal();
 
       if (!corsi.length) {
         grid.innerHTML = `
-          <article class="workshop-card reveal">
-            <div class="workshop-icon" aria-hidden="true">
-              <svg viewBox="0 0 20 22" fill="none" stroke="currentColor" stroke-width="1.2"><use href="#sym-diamond"/></svg>
-            </div>
+          <article class="workshop-card">
             <h3 class="workshop-title">Nuovi workshop in arrivo</h3>
             <p class="workshop-desc">
               Sto preparando nuovi laboratori: torna a trovarmi presto per scoprirli!

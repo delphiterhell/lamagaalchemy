@@ -183,7 +183,7 @@
     </h1>
 
     <p class="hero-sub">
-      Ogni pezzo è unico, fatto a mano con cura.
+      Pietre naturali, nodi e metalli trasformati a mano in piccole creazioni da indossare.
     </p>
 
     <!-- Su desktop: solo il bottone. Su mobile: flex row cristallo+bottone+cristallo -->
@@ -236,18 +236,7 @@
       <!-- Immagine di Magalì -->
       <div class="chi-sono-visual reveal">
         <div class="portrait-deco" aria-hidden="true"></div>
-        <!--
-          📸 FOTO: inserisci qui la tua foto.
-          Sostituisci il blocco .portrait-placeholder con:
-          <img src="immagini/magali.jpg" alt="Magalì — La Maga Alchemy" style="width:100%;max-width:420px;border-radius:2px;" />
-        -->
-        <div class="portrait-placeholder" role="img" aria-label="Foto di Magalì — in arrivo">
-          <svg width="48" height="52" viewBox="0 0 20 22" fill="none" style="color:#C8952A;opacity:0.4">
-            <use href="#sym-earth"/>
-          </svg>
-          <span class="portrait-label">Foto di Magalì</span>
-         <!--  <span class="portrait-label" style="opacity:0.5;font-size:0.55rem">→ inserisci qui la tua immagine</span> -->
-        </div>
+        <img class="portrait-photo" src="images/chisono.webp" alt="Magalì — La Maga Alchemy" />
       </div>
 
       <!-- Testo -->
@@ -257,21 +246,25 @@
           Chi sono
         </h2>
 
-        <p class="reveal reveal-delay-2">
+<!--         <p class="reveal reveal-delay-2">
           [Bio di Magalì]
-        </p>
+        </p> -->
 
         <blockquote class="quote reveal reveal-delay-3">
-          [Citazione o frase di Magalì]
+L’alchimia, per me, è l’incontro tra materia, mani e immaginazione.
         </blockquote>
 
         <p class="reveal reveal-delay-3">
-          [Descrizione del lavoro e dei materiali]
+          Sono Magalì e La Maga Alchemy è il mio piccolo universo creativo.
+Creo gioielli artigianali lavorando soprattutto con il macramè, le pietre naturali e l’argento. Mi piace partire dai materiali, dai loro colori e dalle loro forme e lasciare che ogni pezzo trovi poco a poco la propria identità. 
+Sono da sempre affascinata dalle pietre, non soltanto per la loro bellezza, ma anche per i significati e i simboli che culture diverse hanno attribuito loro nel tempo. Nelle mie creazioni questa dimensione incontra il lavoro manuale, la ricerca estetica e il piacere di creare qualcosa che non sia anonimo né prodotto in serie.
+Molti dei miei gioielli sono pezzi unici o realizzati in piccole quantità. Mi piace l’idea che chi ne sceglie uno possa sentirlo davvero suo: per la pietra, per la forma, per quello che gli ricorda o semplicemente perché, appena lo vede, pensa “questo è il mio”.
+La magia, per me, sta anche qui.
         </p>
 
-        <p class="reveal reveal-delay-4">
+<!--         <p class="reveal reveal-delay-4">
           [Workshop e mercatini]
-        </p>
+        </p> -->
 
         <div class="elementi-row reveal reveal-delay-5">
           <div class="elemento-chip">
@@ -323,9 +316,9 @@
       <h2 class="section-title reveal reveal-delay-1">
         Collezioni
       </h2>
-      <p class="section-desc reveal reveal-delay-2">
+<!--       <p class="section-desc reveal reveal-delay-2">
         [Descrizione introduttiva delle collezioni]
-      </p>
+      </p> -->
     </div>
 
     <!-- Tabs -->
@@ -333,6 +326,7 @@
       <button class="tab-btn active" data-tab="piccolini">I Piccolini</button>
       <button class="tab-btn" data-tab="chokers">I Chokers</button>
       <button class="tab-btn" data-tab="pezzi-unici">Pezzi Unici</button>
+      <button class="tab-btn" data-tab="mandala">Mandala</button>
     </div>
 
     <!-- Gruppo: I Piccolini -->
@@ -355,6 +349,13 @@
         <p class="eventi-loading">Caricamento collezione…</p>
       </div>
     </div><!-- /pezzi-unici -->
+
+    <!-- Gruppo: Mandala -->
+    <div class="collezione-group" data-group="mandala">
+      <div class="products-grid" data-products-grid="mandala">
+        <p class="eventi-loading">Caricamento collezione…</p>
+      </div>
+    </div><!-- /mandala -->
 
   </div>
 </section>
@@ -385,9 +386,9 @@
       <h2 class="section-title reveal reveal-delay-1">
         Mercatini <span class="gold">&amp; Appuntamenti</span>
       </h2>
-      <p class="section-desc reveal reveal-delay-2">
+<!--       <p class="section-desc reveal reveal-delay-2">
         [Descrizione della sezione mercatini]
-      </p>
+      </p> -->
     </div>
 
     <!--
