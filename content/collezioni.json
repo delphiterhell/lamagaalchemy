@@ -3,36 +3,85 @@
     {
       "nome": "Mandala in Labradorite",
       "categoria": "mandala",
-      "descrizione": "Mandala con pietra blu",
+      "descrizione": "Collana in macramè con labradorite naturale, realizzata interamente a mano. La pietra presenta caratteristici riflessi blu che cambiano a seconda della luce. ",
       "foto": [
-        "/images/uploads/photo-album-1-00000002.jpg"
+        "/images/uploads/photo-album-1-00000002.webp",
+        "/images/uploads/photo-album-1-00000025.jpg"
       ],
       "in_evidenza": true
     },
     {
-      "nome": "Collana macramè bordeaux con labradorite",
-      "categoria": "piccolini",
-      "descrizione": "Collana annodata a mano in macramè bordeaux con pietra di labradorite, dai riflessi cangianti.",
-      "foto": [
-        "/images/uploads/photo-album-1-00000002.jpg"
-      ],
-      "in_evidenza": true
-    },
-    {
-      "nome": "Collana pezzo unico con cristallo di rocca",
+      "nome": "Choker in macramè con labradorite",
       "categoria": "pezzi-unici",
-      "descrizione": "Pezzo unico realizzato con cristallo di rocca grezzo, incastonato in una trama di macramè dorato.",
+      "descrizione": "Choker realizzato a mano in macramè, con labradorite naturale e dettagli metallici. Un pezzo unico, caratterizzato dai riflessi blu della pietra.",
       "foto": [
-        "/images/macrame3.png"
+        "/images/uploads/photo-album-1-00000010-1-.webp"
       ],
       "in_evidenza": true
     },
     {
-      "nome": "Ciondolo alchemico in ottone e ametista",
+      "nome": "Collana in macramè con pietra naturale",
       "categoria": "pezzi-unici",
-      "descrizione": "Ciondolo simbolico in ottone lavorato a mano con ametista grezza, su cordino in macramè.",
-      "foto": [],
+      "descrizione": "Collana artigianale realizzata a mano in macramè, con pietra naturale centrale dalle tonalità verde acqua e piccoli dettagli decorativi. Pezzo unico.",
+      "foto": [
+        "/images/uploads/photo-album-1-00000006-2-.webp"
+      ],
+      "in_evidenza": true
+    },
+    {
+      "nome": "Choker in macramè con pietra nera",
+      "categoria": "chokers",
+      "descrizione": "Choker artigianale realizzato a mano in macramè, con pietra naturale scura centrale e piccoli dettagli decorativi.",
+      "foto": [
+        "/images/uploads/photo-album-1-00000021.jpg"
+      ],
       "in_evidenza": false
+    },
+    {
+      "in_evidenza": false,
+      "foto": [
+        "/images/uploads/photo-album-1-00000032.jpg"
+      ],
+      "nome": "Choker in macramè con perline",
+      "descrizione": "Choker artigianale realizzato a mano in macramè, impreziosito da piccole perline decorative lungo l’intreccio. Leggero e minimale, pensato per essere indossato aderente al collo. ",
+      "categoria": "chokers"
+    },
+    {
+      "in_evidenza": false,
+      "foto": [
+        "/images/uploads/photo-album-1-00000036.jpg",
+        "/images/uploads/photo-album-1-00000034.jpg"
+      ],
+      "nome": "Choker in macramè con ametista",
+      "categoria": "pezzi-unici",
+      "descrizione": "Choker artigianale realizzato a mano in macramè, con ametista centrale e piccoli dettagli decorativi. L’intreccio combina tonalità naturali e viola, seguendo delicatamente la linea del collo."
+    },
+    {
+      "in_evidenza": false,
+      "foto": [
+        "/images/uploads/photo-album-1-00000041.jpg"
+      ],
+      "nome": "Piccolino in macramè con pietra naturale",
+      "descrizione": "Collana sottile realizzata a mano in macramè, con piccola pietra naturale centrale e dettagli metallici. Leggera e discreta, pensata per essere indossata ogni giorno.",
+      "categoria": "piccolini"
+    },
+    {
+      "in_evidenza": false,
+      "foto": [
+        "/images/uploads/photo-album-1-00000044.jpg"
+      ],
+      "nome": "Piccolino in macramè con pietra naturale",
+      "descrizione": "Collana sottile realizzata a mano in macramè, con piccola pietra naturale centrale e dettagli metallici. Leggera, discreta e adatta da indossare ogni giorno.",
+      "categoria": "piccolini"
+    },
+    {
+      "in_evidenza": false,
+      "foto": [
+        "/images/uploads/photo-album-1-00000042.jpg"
+      ],
+      "nome": "Piccolino in macramè con pietra naturale",
+      "categoria": "piccolini",
+      "descrizione": "Collana sottile realizzata a mano in macramè, con piccola pietra naturale centrale e dettagli metallici. Leggera, discreta e adatta da indossare ogni giorno."
     }
   ]
 }
