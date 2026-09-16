@@ -778,7 +778,8 @@ p { max-width: 68ch; }
 
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 300px));
+  justify-content: center;
   gap: 1.5rem;
 }
 
@@ -1232,6 +1233,106 @@ p { max-width: 68ch; }
   font-size: 0.9rem;
   color: var(--gold-dark);
   font-weight: 700;
+}
+
+.form-privacy-note {
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.form-privacy-note a {
+  color: var(--gold-dark);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.form-privacy-note a:hover { color: var(--gold); }
+
+/* =============================================
+   PAGINA LEGALE (Privacy Policy)
+   ============================================= */
+.legal-page { padding: 9rem 2rem 6rem; }
+
+.legal-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.legal-title {
+  font-size: clamp(2.4rem, 6vw, 3.4rem);
+  color: var(--gold);
+  margin-bottom: 0.9rem;
+}
+
+.legal-updated {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 3.5rem;
+}
+
+.legal-intro {
+  color: var(--text-mid);
+  font-size: 1.05rem;
+  line-height: 1.85;
+  margin-bottom: 3rem;
+}
+
+.legal-body h2 {
+  font-size: clamp(1.3rem, 2.2vw, 1.6rem);
+  color: var(--text-dark);
+  margin: 3.25rem 0 1rem;
+}
+
+.legal-body h2:first-child { margin-top: 0; }
+
+.legal-body p {
+  color: var(--text-mid);
+  font-size: 1rem;
+  line-height: 1.85;
+  max-width: 70ch;
+  margin-bottom: 1.1rem;
+}
+
+.legal-body ul {
+  margin: 0 0 1.1rem;
+  padding-left: 1.3rem;
+  max-width: 70ch;
+}
+
+.legal-body ul li {
+  list-style: disc;
+  color: var(--text-mid);
+  font-size: 1rem;
+  line-height: 1.85;
+  margin-bottom: 0.4rem;
+}
+
+.legal-body a {
+  color: var(--gold-dark);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.legal-body a:hover { color: var(--gold); }
+
+.legal-back {
+  display: inline-block;
+  margin-top: 4rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+}
+
+.legal-back:hover { color: var(--gold); }
+
+@media (max-width: 640px) {
+  .legal-page { padding: 7rem 1.25rem 4rem; }
+  .legal-body h2 { margin: 2.5rem 0 0.9rem; }
 }
 
 /* =============================================

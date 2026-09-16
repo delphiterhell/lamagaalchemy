@@ -223,16 +223,25 @@ observeReveal();
     btn.disabled = true;
     btn.textContent = 'Invio in corso…';
 
-    // Simulazione invio — sostituire con fetch() verso un endpoint reale
-    setTimeout(() => {
-      form.reset();
-      btn.disabled = false;
-      btn.textContent = 'Invia messaggio';
-      if (success) {
-        success.style.display = 'block';
-        setTimeout(() => { success.style.display = 'none'; }, 5000);
-      }
-    }, 1200);
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(new FormData(form)).toString()
+    })
+      .then(() => {
+        form.reset();
+        if (success) {
+          success.style.display = 'block';
+          setTimeout(() => { success.style.display = 'none'; }, 5000);
+        }
+      })
+      .catch(() => {
+        alert('Errore nell\'invio del messaggio. Riprova, oppure scrivimi direttamente a lamaga.alchemy@gmail.com.');
+      })
+      .finally(() => {
+        btn.disabled = false;
+        btn.textContent = 'Invia messaggio';
+      });
   });
 })();
 
