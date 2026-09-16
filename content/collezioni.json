@@ -1,7 +1,7 @@
 {
   "pezzi": [
     {
-      "nome": "Mandala in Labradorite",
+      "nome": "Mandala in Labradorite blu",
       "categoria": "mandala",
       "descrizione": "Collana in macramè realizzata interamente a mano, con labradorite naturale dalle iridescenze blu e perline in ottone. L’intreccio si sviluppa attorno alla pietra in una forma mandala, lasciando che le sfumature della labradorite cambino con la luce.",
       "foto": [
@@ -119,7 +119,7 @@
         "/images/uploads/photo-album-1-00000017.jpg",
         "/images/uploads/photo-album-1-00000016-1-.jpg"
       ],
-      "nome": "Collana mandala in macramè con pietra naturale",
+      "nome": "Collana mandala in macramè con labradorite bianca",
       "descrizione": "Collana in macramè realizzata interamente a mano, con labradorite bianca naturale dalle delicate iridescenze azzurre e perline in ottone. L’intreccio, lavorato con un filo sottile da 0,5 mm, si sviluppa attorno alla pietra in una forma mandala più minuta e dettagliata, lasciando che le sfumature della labradorite cambino con la luce.",
       "categoria": "mandala"
     },
@@ -137,9 +137,9 @@
       "foto": [
         "/images/uploads/photo-album-1-00000019.jpg"
       ],
-      "nome": "Collana mandala in macramè con pietra naturale",
+      "nome": "Collana mandala in macramè con ametista",
       "categoria": "mandala",
-      "descrizione": "Collana artigianale realizzata a mano in macramè chiaro, con pietra naturale centrale e piccoli dettagli dorati. Il pendente a mandala valorizza le sfumature della pietra con una lavorazione delicata e geometrica."
+      "descrizione": "Collana in macramè realizzata interamente a mano, con ametista naturale dal viola profondo e perline in ottone. L’intreccio, lavorato con un filo sottile da 0,5 mm, si sviluppa attorno alla pietra in una forma mandala delicata e geometrica, creando un contrasto elegante tra il tono scuro dell’ametista e i dettagli dorati."
     },
     {
       "in_evidenza": false,
