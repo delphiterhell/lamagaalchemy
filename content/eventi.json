@@ -1,22 +1,16 @@
 {
   "eventi": [
     {
-      "nome": "Mercatino Estivo dell'Artigianato",
-      "data": "2026-07-12",
-      "luogo": "Lungo Po, Torino",
-      "note": "Anteprima dei nuovi pezzi unici in macramè e cristalli."
-    },
-    {
-      "nome": "Fiera d'Autunno",
-      "data": "2026-09-20",
-      "luogo": "Piazza della Repubblica, Asti",
+      "nome": "Cire Market",
+      "data": "2026-09-26",
+      "luogo": "Casa di Quartiere Scipione dal Ferro.  Via Sante Vincenzi, 50 Bologna",
       "note": ""
     },
     {
-      "nome": "Mercatino estivo",
-      "data": "2026-07-08",
-      "luogo": "Via Oberdan 18",
-      "note": "Mi troverai con il mio banchetto"
+      "nome": "Fiori Randagi",
+      "data": "2026-10-03",
+      "luogo": "Fondo Comini. via Aristotele Fioravanti, 68  Bologna",
+      "note": ""
     }
   ]
 }
