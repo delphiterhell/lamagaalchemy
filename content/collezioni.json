@@ -82,6 +82,92 @@
       "nome": "Piccolino in macramè con pietra naturale",
       "categoria": "piccolini",
       "descrizione": "Collana sottile realizzata a mano in macramè, con piccola pietra naturale centrale e dettagli metallici. Leggera, discreta e adatta da indossare ogni giorno."
+    },
+    {
+      "in_evidenza": false,
+      "foto": [
+        "/images/uploads/photo-album-1-00000047.jpg",
+        "/images/uploads/photo-album-1-00000045.jpg"
+      ],
+      "nome": "Choker in macramè con pietra naturale",
+      "descrizione": "Choker artigianale realizzato a mano in macramè, con pietra centrale e piccoli dettagli metallici. L’intreccio sottile avvolge il collo con una linea delicata e decorativa.",
+      "categoria": "chokers"
+    },
+    {
+      "in_evidenza": false,
+      "nome": "Choker in macramè con pietra naturale",
+      "categoria": "chokers",
+      "descrizione": "Choker artigianale realizzato a mano in macramè nero, con pietra naturale dai riflessi chiari e ciondolo a cuore in metallo. L’intreccio è impreziosito da piccole perline decorative.",
+      "foto": [
+        "/images/uploads/photo-album-1-00000049.jpg",
+        "/images/uploads/photo-album-1-00000048.jpg"
+      ]
+    },
+    {
+      "in_evidenza": false,
+      "foto": [
+        "/images/uploads/photo-album-1-00000053.jpg",
+        "/images/uploads/photo-album-1-00000051.jpg"
+      ],
+      "nome": "Collana in macramè con pietra verde",
+      "categoria": "chokers",
+      "descrizione": "Collana artigianale realizzata a mano in macramè nero, con pietra naturale verde centrale e piccoli dettagli metallici. L’intreccio è semplice e regolare, pensato per valorizzare la pietra. Pezzo unico."
+    },
+    {
+      "in_evidenza": false,
+      "foto": [
+        "/images/uploads/photo-album-1-00000017.jpg",
+        "/images/uploads/photo-album-1-00000016-1-.jpg"
+      ],
+      "nome": "Collana mandala in macramè con pietra naturale",
+      "descrizione": "Collana artigianale realizzata a mano in macramè nero, con pietra naturale centrale e piccoli dettagli metallici dorati. La lavorazione a mandala incornicia la pietra e crea un pendente molto decorativo.",
+      "categoria": "mandala"
+    },
+    {
+      "in_evidenza": false,
+      "foto": [
+        "/images/uploads/photo-album-1-00000020-1-.jpg"
+      ],
+      "nome": "Collana mandala in macramè con pietra blu",
+      "categoria": "mandala",
+      "descrizione": "Collana artigianale realizzata a mano in macramè chiaro, con pietra naturale blu centrale e piccoli dettagli decorativi. Il pendente a forma di mandala crea un effetto leggero e luminoso."
+    },
+    {
+      "in_evidenza": false,
+      "foto": [
+        "/images/uploads/photo-album-1-00000019.jpg"
+      ],
+      "nome": "Collana mandala in macramè con pietra naturale",
+      "categoria": "mandala",
+      "descrizione": "Collana artigianale realizzata a mano in macramè chiaro, con pietra naturale centrale e piccoli dettagli dorati. Il pendente a mandala valorizza le sfumature della pietra con una lavorazione delicata e geometrica."
+    },
+    {
+      "in_evidenza": false,
+      "foto": [
+        "/images/uploads/photo-album-1-00000028.jpg",
+        "/images/uploads/photo-album-1-00000029.jpg"
+      ],
+      "categoria": "pezzi-unici",
+      "nome": "Collana in macramè con pietra verde",
+      "descrizione": "Collana artigianale realizzata a mano in macramè, con pietra naturale verde centrale e piccoli dettagli decorativi. Il pendente compatto valorizza la pietra e rende la collana semplice da indossare ogni giorno."
+    },
+    {
+      "in_evidenza": false,
+      "foto": [
+        "/images/uploads/photo-album-1-00000009-3-.jpg"
+      ],
+      "categoria": "chokers",
+      "nome": "Choker su richiesta in macramè con pietra naturale",
+      "descrizione": "Choker realizzato a mano su richiesta, personalizzabile nei colori dell’intreccio, nella pietra centrale e nei piccoli dettagli decorativi. Ogni pezzo viene creato singolarmente e può presentare leggere variazioni che lo rendono unico."
+    },
+    {
+      "in_evidenza": false,
+      "foto": [
+        "/images/uploads/photo-album-1-00000003-1-.jpg"
+      ],
+      "categoria": "pezzi-unici",
+      "nome": "Collana in macramè con pietra naturale",
+      "descrizione": "Collana artigianale realizzata a mano in macramè nero, con pietra naturale centrale dai riflessi chiari e dettagli dorati. La lavorazione più strutturata crea un pendente importante ma armonioso."
     }
   ]
 }
