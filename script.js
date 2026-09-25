@@ -11,6 +11,33 @@ function escHtml(str) {
     .replace(/"/g, '&quot;');
 }
 
+/* Date da Decap CMS in formato "YYYY-MM-DD". Una data di fine è
+   facoltativa: se manca (o non è successiva all'inizio) l'evento è
+   di un solo giorno. */
+function parseIsoDate(str) {
+  const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(String(str || ''));
+  return m ? { anno: +m[1], mese: +m[2], giorno: +m[3], iso: m[0] } : null;
+}
+
+function dateRange(inizio, fine) {
+  const da = parseIsoDate(inizio);
+  const a = parseIsoDate(fine);
+  return { da, a: da && a && a.iso > da.iso ? a : null };
+}
+
+const MESI_ESTESI = ['gennaio', 'febbraio', 'marzo', 'aprile', 'maggio', 'giugno', 'luglio', 'agosto', 'settembre', 'ottobre', 'novembre', 'dicembre'];
+
+// Es: "12 luglio 2026", "12–14 luglio 2026", "30 luglio – 2 agosto 2026"
+function formatDateRange(inizio, fine) {
+  const { da, a } = dateRange(inizio, fine);
+  if (!da) return '';
+  const mese = d => MESI_ESTESI[d.mese - 1];
+  if (!a) return `${da.giorno} ${mese(da)} ${da.anno}`;
+  if (da.anno !== a.anno) return `${da.giorno} ${mese(da)} ${da.anno} – ${a.giorno} ${mese(a)} ${a.anno}`;
+  if (da.mese !== a.mese) return `${da.giorno} ${mese(da)} – ${a.giorno} ${mese(a)} ${a.anno}`;
+  return `${da.giorno}–${a.giorno} ${mese(da)} ${da.anno}`;
+}
+
 /* Le foto vengono servite tramite Netlify Image CDN
    (/.netlify/images?url=...) così Magalì può caricare foto pesanti
    dal telefono senza doverle ridimensionare a mano. */
@@ -364,6 +391,7 @@ observeReveal();
   function renderWorkshopCard(corso, index) {
     const delay = index > 0 ? ` reveal-delay-${Math.min(index, 3)}` : '';
     const icona = corso.icona || 'fire';
+    const dataStr = formatDateRange(corso.data, corso.data_fine);
 
     return `
       <article class="workshop-card reveal${delay}">
@@ -375,6 +403,11 @@ observeReveal();
           ${escHtml(corso.descrizione || '')}
         </p>
         <div class="workshop-meta">
+          ${dataStr ? `
+          <span class="workshop-meta-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            ${escHtml(dataStr)}
+          </span>` : ''}
           <span class="workshop-meta-item">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
             ${escHtml(corso.durata || '')}
@@ -456,19 +489,33 @@ observeReveal();
 
       // Il primo evento con data >= oggi è il "Prossimo"
       const todayStr = new Date().toISOString().slice(0, 10);
-      const prossimo = sorted.find(ev => String(ev.data) >= todayStr);
+      // (per gli eventi di più giorni conta la data di fine: se è in corso resta il "Prossimo")
+      const prossimo = sorted.find(ev => {
+        const { da, a } = dateRange(ev.data, ev.data_fine);
+        const ultimo = a || da;
+        return ultimo && ultimo.iso >= todayStr;
+      });
 
       container.innerHTML = sorted.map((ev, i) => {
-        const dataStr = String(ev.data || '');
-        const [anno, mese, giorno] = dataStr.split('-');
-        const meseAbbr = mese ? MESI[parseInt(mese, 10) - 1] : '';
+        const { da, a } = dateRange(ev.data, ev.data_fine);
+        const abbr = d => MESI[d.mese - 1];
+        let giorni = '', meseLabel = '';
+        if (da && !a) {
+          giorni = da.giorno;
+          meseLabel = `${abbr(da)} ${da.anno}`;
+        } else if (da && a) {
+          giorni = `${da.giorno}–${a.giorno}`;
+          if (da.anno !== a.anno) meseLabel = `${abbr(da)} ${da.anno} – ${abbr(a)} ${a.anno}`;
+          else if (da.mese !== a.mese) meseLabel = `${abbr(da)} – ${abbr(a)} ${a.anno}`;
+          else meseLabel = `${abbr(da)} ${da.anno}`;
+        }
         const delay = i > 0 ? ` reveal-delay-${Math.min(i, 3)}` : '';
         const isProssimo = prossimo && ev === prossimo;
 
         return `
           <article class="evento-card reveal${delay}">
-            <div class="evento-date">${giorno ? parseInt(giorno, 10) : ''}</div>
-            <span class="evento-month">${meseAbbr}${anno ? ' ' + anno : ''}</span>
+            <div class="evento-date">${giorni}</div>
+            <span class="evento-month">${meseLabel}</span>
             ${isProssimo ? '<div class="evento-badge">Prossimo</div>' : ''}
             <h3 class="evento-nome">${escHtml(ev.nome || '')}</h3>
             ${ev.luogo ? `

@@ -929,10 +929,21 @@ p { max-width: 68ch; }
   opacity: 0.7;
 }
 
+/* Colonne a larghezza massima fissa + auto-fit: con pochi eventi le
+   card restano centrate, quando le righe si riempiono l'ultima riga
+   parte da sinistra (stesso comportamento della griglia workshop). */
 .eventi-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 384px));
+  justify-content: center;
   gap: 1.5rem;
+}
+
+/* Con auto-fit le colonne vuote collassano: i messaggi di
+   caricamento/vuoto userebbero una sola colonna stretta. */
+.eventi-grid:has(> .eventi-loading, > .eventi-empty),
+.workshop-grid:has(> .eventi-loading, > .eventi-empty) {
+  display: block;
 }
 
 .evento-card {

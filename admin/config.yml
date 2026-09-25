@@ -101,6 +101,24 @@ collections:
               - label: "Descrizione"
                 name: "descrizione"
                 widget: "text"
+              - label: "Data (o data di inizio)"
+                name: "data"
+                widget: "datetime"
+                required: false
+                format: "YYYY-MM-DD"
+                date_format: "DD/MM/YYYY"
+                time_format: false
+                picker_utc: true
+                hint: "Facoltativa. Per un workshop di un solo giorno compila solo questa."
+              - label: "Data di fine (facoltativa)"
+                name: "data_fine"
+                widget: "datetime"
+                required: false
+                format: "YYYY-MM-DD"
+                date_format: "DD/MM/YYYY"
+                time_format: false
+                picker_utc: true
+                hint: "Solo se il workshop dura più giorni. Lasciala vuota per una data singola."
               - label: "Durata"
                 name: "durata"
                 widget: "string"
@@ -140,13 +158,23 @@ collections:
               - label: "Nome evento"
                 name: "nome"
                 widget: "string"
-              - label: "Data"
+              - label: "Data (o data di inizio)"
                 name: "data"
                 widget: "datetime"
                 format: "YYYY-MM-DD"
                 date_format: "DD/MM/YYYY"
                 time_format: false
                 picker_utc: true
+                hint: "Per un evento di un solo giorno compila solo questa."
+              - label: "Data di fine (facoltativa)"
+                name: "data_fine"
+                widget: "datetime"
+                required: false
+                format: "YYYY-MM-DD"
+                date_format: "DD/MM/YYYY"
+                time_format: false
+                picker_utc: true
+                hint: "Solo se l'evento dura più giorni: sul sito comparirà l'intervallo di date. Lasciala vuota per una data singola."
               - label: "Luogo"
                 name: "luogo"
                 widget: "string"
